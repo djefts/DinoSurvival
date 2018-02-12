@@ -12,5 +12,10 @@ public class Dinosaur {
     private boolean herd;
     private boolean territorial;
     private boolean herbivore;
-
+    private int xLoc;
+    private int yLoc;
+    
+    public Dinosaur() {
+    
+    }
 }
