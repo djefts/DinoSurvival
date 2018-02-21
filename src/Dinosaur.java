@@ -16,7 +16,6 @@ public class Dinosaur {
     private int yLoc;
     
     public Dinosaur() {
-    
     }
     
     public int getHealth() {

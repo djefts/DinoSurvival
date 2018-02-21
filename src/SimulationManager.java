@@ -1,5 +1,7 @@
 public class SimulationManager {
     
+    private final int minSimLength = 500;
+    private final int maxSimLength = 5000;
     private int simulationLength;
     
     public void loop() {
@@ -15,9 +17,13 @@ public class SimulationManager {
     }
     
     public void setSimulationLength() {
-        simulationLength = (int)Math.random() * 1000;
-        if(simulationLength<250) {
-            simulationLength=250;
+        simulationLength = (int)Math.random() * maxSimLength;
+        checkSimLength();
+    }
+    
+    public void checkSimLength() {
+        if(simulationLength<minSimLength) {
+            simulationLength=minSimLength;
         }
     }
     
