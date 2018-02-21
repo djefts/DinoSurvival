@@ -3,3 +3,6 @@
 DinoSurvival.iml
 out/
 .DS_Store
+workspace.xml
+*.xml
+.idea/workspace.xml
