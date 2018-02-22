@@ -17,7 +17,7 @@ public class Dinosaur {
     private int yLoc;
     
     public Dinosaur() {
-        System.out.println("hello_world");
+    
     }
     
     public int getHealth() {

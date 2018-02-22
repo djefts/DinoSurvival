@@ -12,7 +12,6 @@ public class SimulationManager {
         do {
             
             
-            
             simulationLength -= 1;
         } while (simulationLength > 0);
     }
