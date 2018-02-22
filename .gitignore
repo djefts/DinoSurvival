@@ -3,3 +3,7 @@
 DinoSurvival.iml
 out/
 .DS_Store
+.idea/
+Pictures/
+/.idea/workspace.xml
+!/src/
