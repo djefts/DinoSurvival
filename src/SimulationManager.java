@@ -9,8 +9,6 @@ public class SimulationManager {
         System.out.println(getSimulationLength());
         
         do {
-            //what is life
-            System.out.println("begin loop");
             
             
             simulationLength -= 1;
