@@ -3,11 +3,11 @@ public class SimulationManager {
     private final int minSimLength = 500;
     private final int maxSimLength = 5000;
     private int simulationLength;
-    private Object[][] thePlayingField;//asdf
+    private Object[][] thePlayingField;
     
     public void loop() {
         setSimulationLength();
-        System.out.println(getSimulationLength());
+        System.out.println("Simulation will run for " + getSimulationLength() + "loops.");
         
         do {
             
