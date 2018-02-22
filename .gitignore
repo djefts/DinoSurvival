@@ -1,11 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
-#.idea/
 DinoSurvival.iml
 out/
 .DS_Store
 .idea/
 Pictures/
-.idea/workspace.xml
 .project
 !/src/
 *.xml

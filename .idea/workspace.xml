@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9195a735-e619-4554-a596-1ee91a8f814c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/SimulationManager.java" afterPath="$PROJECT_DIR$/src/SimulationManager.java" />
     </list>
@@ -19,8 +22,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -30,10 +33,10 @@
         <entry file="file://$PROJECT_DIR$/src/SimulationManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+              <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
               <folding>
-                <element signature="e#775#776#0" expanded="true" />
-                <element signature="e#814#815#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#820#821#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -225,29 +228,6 @@
             <path>
               <item name="DinoSurvival" type="b2602c69:ProjectViewProjectNode" />
               <item name="DinoSurvival" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DinoSurvival" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DinoSurvival" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DinoSurvival" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DinoSurvival" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DinoSurvival" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DinoSurvival" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="DinoSurvival" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DinoSurvival" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DinoSurvival" type="462c0819:PsiDirectoryNode" />
               <item name="Pictures" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -384,12 +364,12 @@
       <workItem from="1518571868958" duration="44000" />
       <workItem from="1518571969868" duration="202000" />
       <workItem from="1518639042511" duration="6564000" />
-      <workItem from="1519243349656" duration="3312000" />
+      <workItem from="1519243349656" duration="3576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12421000" />
+    <option name="totallyTimeSpent" value="12685000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="123" y="22" width="1557" height="1026" extended-state="0" />
@@ -568,8 +548,8 @@
         <state relative-caret-position="105">
           <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
           <folding>
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -873,18 +853,18 @@
     <entry file="file://$PROJECT_DIR$/src/SimulationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
+          <caret line="5" column="45" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
           <folding>
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#820#821#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>

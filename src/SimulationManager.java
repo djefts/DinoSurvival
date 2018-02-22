@@ -3,7 +3,7 @@ public class SimulationManager {
     private final int minSimLength = 500;
     private final int maxSimLength = 5000;
     private int simulationLength;
-    private Object[][] thePlayingField;
+    private Object[][] thePlayingField;//asdf
     
     public void loop() {
         setSimulationLength();
