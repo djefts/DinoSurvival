@@ -17,7 +17,7 @@ public class Dinosaur {
     private int yLoc;
     
     public Dinosaur() {
-    
+        //PLEASE tell me this is working
     }
     
     public int getHealth() {
