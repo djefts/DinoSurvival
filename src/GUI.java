@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /********************************************************
  *GUIManager.java
  *Final Project: Macronutrient Calculator & Tracker
@@ -109,3 +110,15 @@ public class GUI extends Application {
        
 }
 
+=======
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class GUI extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+    
+    }
+}
+>>>>>>> 01685ccd56235ba9c57ec3b091314bba35aad9f4

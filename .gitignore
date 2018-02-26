@@ -1,7 +1,16 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea/
 DinoSurvival.iml
 out/
-.gitignore
 .DS_Store
+<<<<<<< HEAD
 /.metadata/
+=======
+.idea/
+Pictures/
+<<<<<<< HEAD
+.project
+=======
+>>>>>>> David
+!/src/
+*.xml
+>>>>>>> 01685ccd56235ba9c57ec3b091314bba35aad9f4
