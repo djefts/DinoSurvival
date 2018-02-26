@@ -4,9 +4,6 @@ out/
 .DS_Store
 .idea/
 Pictures/
-<<<<<<< HEAD
 .project
-=======
->>>>>>> David
 !/src/
-*.xml
+lib/
