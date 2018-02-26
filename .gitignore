@@ -1,5 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-DinoSurvival.iml
+*.iml
 out/
 .DS_Store
 .idea/
