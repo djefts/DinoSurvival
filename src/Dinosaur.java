@@ -1,5 +1,4 @@
 public class Dinosaur {
-	//Hello World
     private int health;
     private int speed;
     private int attack;
@@ -138,5 +137,14 @@ public class Dinosaur {
     
     public void setyLoc(int yLoc) {
         this.yLoc = yLoc;
+    }
+    
+    public int[] getLocation() {
+        return new int[]{getxLoc(), getyLoc()};
+    }
+    
+    public void setLocation(int xLoc, int yLoc) {
+        setxLoc(xLoc);
+        setyLoc(yLoc);
     }
 }
