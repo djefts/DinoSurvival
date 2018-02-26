@@ -4,3 +4,4 @@ DinoSurvival.iml
 out/
 .gitignore
 .DS_Store
+/.metadata/
