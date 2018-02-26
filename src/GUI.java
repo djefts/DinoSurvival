@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 /********************************************************
  *GUIManager.java
- *Final Project: Macronutrient Calculator & Tracker
+ *Final Project: Dinosaur Survival Simulation 
  *Author: Christian A. Carrizales
- *Date:12042017
+ *Date:
  *
  *Variable List: 
  * 
@@ -35,11 +35,6 @@ import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.geometry.Insets;
 
-//import javafx.scene.input.KeyCode;
-//import javafx.animation.AnimationTimer;
-//import javafx.beans.property.BooleanProperty;
-//import javafx.beans.binding.BooleanBinding;
-//import javafx.beans.property.SimpleBooleanProperty;
 
 public class GUI extends Application {
 	
@@ -110,15 +105,5 @@ public class GUI extends Application {
        
 }
 
-=======
-import javafx.application.Application;
-import javafx.stage.Stage;
 
-public class GUI extends Application {
     
-    @Override
-    public void start(Stage primaryStage) {
-    
-    }
-}
->>>>>>> 01685ccd56235ba9c57ec3b091314bba35aad9f4
