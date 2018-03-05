@@ -2,7 +2,7 @@
 *.iml
 out/
 .DS_Store
-.metadata/
+/.metadata/
 .idea/
 src/Pictures/
 .project
