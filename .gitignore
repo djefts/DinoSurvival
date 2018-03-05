@@ -3,7 +3,6 @@
 out/
 .DS_Store
 /.metadata/
-=======
 .idea/
 src/Pictures/
 .project
