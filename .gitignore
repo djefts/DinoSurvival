@@ -4,8 +4,8 @@ out/
 .DS_Store
 .metadata/
 .idea/
-Pictures/
 .project
 !/src/
 .recommenders
 lib/
+/.recommenders

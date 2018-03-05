@@ -77,12 +77,12 @@ public class GUI extends Application {
 		showSim.setCenter(centerButts); //Center
 		showSim.setAlignment(centerButts, Pos.TOP_RIGHT) ;
 		
-	/***********************Event Handler**************************/
+	/***********************Event Handlers**************************/
 		//INSERT EVENT HANDLER HERE
 		
 		
 		
-	/**************************************************************/
+	/***************************************************************/
 		
 		
 		//create scene with all objects in it
@@ -98,7 +98,6 @@ public class GUI extends Application {
 	      
 	}
 	
-	//Start program (for Eclipse use only)
 	public static void main(String[] args) {
 		 Application.launch(args);	
 	}
