@@ -2,13 +2,10 @@
 *.iml
 out/
 .DS_Store
-<<<<<<< HEAD
-/.metadata/
-=======
+.metadata/
 .idea/
 Pictures/
 .project
 !/src/
-*.xml
->>>>>>> 01685ccd56235ba9c57ec3b091314bba35aad9f4
+.recommenders
 lib/
