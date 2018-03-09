@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 
-public class NaturalResource {
+public class GrassResource {
     private int growthStage; //0-4
     
     private BufferedImage grassStage1 = null;
@@ -11,7 +11,10 @@ public class NaturalResource {
     private BufferedImage grassStage3 = null;
     private BufferedImage grassStage4 = null;
     
-    public NaturalResource(int growthStage) {
+    private int xLoc;
+    private int yLoc;
+    
+    public GrassResource(int growthStage) {
         setGrowthStage(growthStage);
     }
     
@@ -23,12 +26,29 @@ public class NaturalResource {
         this.growthStage = growthStage;
     }
     
+    public int getxLoc() {
+        return xLoc;
+    }
+    
+    public void setxLoc(int xLoc) {
+        this.xLoc = xLoc;
+    }
+    
+    public int getyLoc() {
+        return yLoc;
+    }
+    
+    public void setyLoc(int yLoc) {
+        this.yLoc = yLoc;
+    }
+    
     public BufferedImage getStagePic() {
         try {
             readImages();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         if(getGrowthStage() == 4) {
             return grassStage4;
         } else if(getGrowthStage() == 3) {
@@ -51,6 +71,5 @@ public class NaturalResource {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 }
