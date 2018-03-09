@@ -11,29 +11,16 @@
  **********************************************************/
 
 //Java import statements
+
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.stage.Stage;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.Group;
-import javafx.scene.paint.Color;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane; 
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.geometry.Pos;
-import javafx.geometry.Side;
-import javafx.geometry.Insets;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 
 public class GUI extends Application {
@@ -54,8 +41,8 @@ public class GUI extends Application {
 		Label showYN ;
 		showYN = new Label("Would you like to see a dinosaur simulation?") ;
 		showYN.setStyle("-fx-font: 20 pt");
-		
-		Button yesButt, noButt ; 
+        
+        Button yesButt, noButt;
 		yesButt = new Button("Fuck yeah!") ;
 		yesButt.setStyle("-fx-font: 10 pt");
 		yesButt.setMinSize(200,200) ;
