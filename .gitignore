@@ -11,3 +11,4 @@ src/Pictures/
 lib/
 /.recommenders
 CompileAndRun.sh
+/bin/
