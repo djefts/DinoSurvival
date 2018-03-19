@@ -6,6 +6,8 @@ out/
 .idea/
 .project
 !/src/
+.recommenders
 lib/
 /.recommenders
 CompileAndRun.sh
+/bin/
