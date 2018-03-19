@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 
-public class GrassResource {
+public class Grass extends Edible {
     private int growthStage; //0-4
     
     private BufferedImage grassStage1 = null;
@@ -13,8 +13,12 @@ public class GrassResource {
     
     private int xLoc;
     private int yLoc;
+    private final int growthRate = 4;           //turns before grass will increase in stage
+    private int grow = growthRate;
+    private final int radius = 50;              //radius of grass in pixels
     
-    public GrassResource(int growthStage) {
+    
+    public Grass(int growthStage) {
         setGrowthStage(growthStage);
     }
     
@@ -40,6 +44,13 @@ public class GrassResource {
     
     public void setyLoc(int yLoc) {
         this.yLoc = yLoc;
+    }
+    
+    public void timeToGrow() {
+        grow = -1;
+        if(grow <= 0 && growthStage != 4) {
+            growthStage += 1;
+        }
     }
     
     public BufferedImage getStagePic() {
