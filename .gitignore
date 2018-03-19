@@ -10,3 +10,4 @@ src/Pictures/
 .recommenders
 lib/
 /.recommenders
+CompileAndRun.sh
