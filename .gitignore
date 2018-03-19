@@ -2,15 +2,19 @@
 *.iml
 out/
 .DS_Store
-<<<<<<< HEAD
 /.metadata/
-=======
 .idea/
-Pictures/
+src/Pictures/
 .project
 !/src/
-*.xml
->>>>>>> 01685ccd56235ba9c57ec3b091314bba35aad9f4
+.recommenders
 lib/
+<<<<<<< HEAD
 /bin/
 .project
+=======
+/.recommenders
+CompileAndRun.sh
+/bin/
+>>>>>>> master
+*.fdt
