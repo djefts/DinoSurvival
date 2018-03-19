@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import static java.lang.Double.MAX_VALUE;
 
-public class Dinosaur extends Edible {
+public class Dinosaur implements Positionable {
     private int health;             //health of the dinosaur
     private int speed;              //how far a dino can move in one "turn"
     private int attack;             //attack of the dino, compared to defense
@@ -22,8 +22,9 @@ public class Dinosaur extends Edible {
     private int yLoc;               //current y pixel location of the dino
     
     
-    public Dinosaur() {
-    
+    public Dinosaur(int xLoc, int yLoc) {
+        setxLoc(xLoc);
+        setyLoc(yLoc);
     }
     
     public int getHealth() {
@@ -162,25 +163,13 @@ public class Dinosaur extends Edible {
         this.radius = radius;
     }
     
-    /**
-     * This will find the distance from current X/Y coordinate to "find" X/Y coordinate
-     *
-     * @param currX x coordinate of current spot
-     * @param currY y coordinate of current spot
-     * @param findX x coordinate of other spot
-     * @param findY y coordinate of other spot
-     */
-    public double calculateDistance(int currX, int currY, int findX, int findY) {   //get the distance from curr[ent]X/Y --> findX/Y
-        return Math.sqrt(Math.pow(findX - currX, 2) + Math.pow(findY - currY, 2));
-    }
-    
     public Dinosaur closestDinosaur(ArrayList<Dinosaur> dinosaurs) {
         Dinosaur closestDinosaur = null;
         double distance;
         double minDistance = MAX_VALUE;
         
         for (Dinosaur dinosaur : dinosaurs) {
-            distance = calculateDistance(this.getxLoc(), this.getyLoc(), dinosaur.getxLoc(), dinosaur.getyLoc());
+            distance = distanceTo(dinosaur);
             if(distance < minDistance) {
                 closestDinosaur = dinosaur;
                 minDistance = Double.min(minDistance, distance);
@@ -195,7 +184,7 @@ public class Dinosaur extends Edible {
         double minDistance = MAX_VALUE;
         
         for (Grass grass : grasses) {
-            distance = calculateDistance(this.getxLoc(), this.getyLoc(), grass.getxLoc(), grass.getyLoc());
+            distance = distanceTo(grass);
             if(distance < minDistance) {
                 closestGrass = grass;
                 minDistance = Double.min(minDistance, distance);
@@ -210,7 +199,7 @@ public class Dinosaur extends Edible {
         double minDistance = MAX_VALUE;
         
         for (Water water : waters) {
-            distance = calculateDistance(this.getxLoc(), this.getyLoc(), water.getxLoc(), water.getyLoc());
+            distance = distanceTo(water);
             if(distance < minDistance) {
                 closestWater = water;
                 minDistance = Double.min(minDistance, distance);
@@ -219,8 +208,8 @@ public class Dinosaur extends Edible {
         return closestWater;
     }
     
-    public Edible wut2Eat(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) { //0=dino 1=grass for food type
-        if(foodStorage >= waterStorage) {   //i need 2 eets da foodies
+    public Positioned wut2Eat(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) { //0=dino 1=grass for food type
+        if(foodStorage >= waterStorage && foodStorage != 0) {   //i need 2 eets da foodies
             if(isHerbivore()) {                 //i eet grassies
                 return closestGrass(grasses);
             } else {                            //i eet dinoes
@@ -232,16 +221,16 @@ public class Dinosaur extends Edible {
     }
     
     public void move(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
-        Edible food = wut2Eat(dinosaurs, grasses, waters);
+        Positioned food = wut2Eat(dinosaurs, grasses, waters);
         int xLoc = food.getxLoc();
         int yLoc = food.getyLoc();
-        if(calculateDistance(getxLoc(), getyLoc(), xLoc, yLoc) <= getSpeed()) {
+        if(distanceTo(food) <= getSpeed()) {
             setxLoc(xLoc);
             setyLoc(yLoc);
         } else {
-            double xDist = xLoc - getxLoc();                        //get total x to move
-            double yDist = yLoc - getyLoc();                        //get total y to move
-            double theta = Math.atan(xDist / yDist);                //θ = arctan(y/x)
+            double dx = xLoc - getxLoc();                           //total change in x
+            double dy = yLoc - getyLoc();                           //total change in y
+            double theta = Math.atan(dx / dy);                      //θ = arctan(y/x)
             int newxLoc = (int) (getSpeed() * Math.sin(theta));     //x = s*sin(θ)
             int newyLoc = (int) (getSpeed() * Math.cos(theta));     //x = s*cos(θ)
             setxLoc(getxLoc() + newxLoc);                           //newX = x+moveX

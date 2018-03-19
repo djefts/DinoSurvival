@@ -3,23 +3,33 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 
-public class Grass extends Edible {
+public class Grass implements Positioned {
     private int growthStage; //0-4
     
     private BufferedImage grassStage1 = null;
     private BufferedImage grassStage2 = null;
     private BufferedImage grassStage3 = null;
     private BufferedImage grassStage4 = null;
-    
-    private int xLoc;
-    private int yLoc;
     private final int growthRate = 4;           //turns before grass will increase in stage
     private int grow = growthRate;
+    private int xLoc, yLoc;
     private final int radius = 50;              //radius of grass in pixels
     
     
-    public Grass(int growthStage) {
+    public Grass(int growthStage, int xLoc, int yLoc) {
         setGrowthStage(growthStage);
+        this.xLoc = xLoc;
+        this.yLoc = yLoc;
+    }
+    
+    @Override
+    public int getxLoc() {
+        return xLoc;
+    }
+    
+    @Override
+    public int getyLoc() {
+        return yLoc;
     }
     
     public int getGrowthStage() {
@@ -30,24 +40,8 @@ public class Grass extends Edible {
         this.growthStage = growthStage;
     }
     
-    public int getxLoc() {
-        return xLoc;
-    }
-    
-    public void setxLoc(int xLoc) {
-        this.xLoc = xLoc;
-    }
-    
-    public int getyLoc() {
-        return yLoc;
-    }
-    
-    public void setyLoc(int yLoc) {
-        this.yLoc = yLoc;
-    }
-    
     public void timeToGrow() {
-        grow = -1;
+        grow -= 1;
         if(grow <= 0 && growthStage != 4) {
             growthStage += 1;
         }
