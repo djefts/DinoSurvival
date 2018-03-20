@@ -52,7 +52,7 @@ public class createDino {
 		//prompt for stat for Max Age
 		System.out.println("Please enter Max Age: stat between 1 and 10"); 
 		String maxAge = in.nextLine();
-		maxAge = Integer.toString(betweenValueCheck2(Integer.parseInt(maxAge)));
+		maxAge = Integer.toString(betweenValueCheck(Integer.parseInt(maxAge)));
 
 		//prompt for stat for Diet Type
 		System.out.println("Please enter Diet Type: Herbivore = 0 | Carnivore = 1"); 
@@ -69,7 +69,6 @@ public class createDino {
 		String territorial= in.nextLine();
 		territorial = Integer.toString(betweenValueCheck2(Integer.parseInt(territorial)));
 
-
 		// Print Stats
 		System.out.println("Speed is: " + speed);
 		System.out.println("Attack is: " + attack);
@@ -79,43 +78,65 @@ public class createDino {
 		System.out.println("Number of Kids when reproducing is: " + kids);
 		System.out.println("Amount to Food required to reproduce is: " + foodToReproduce);
 		System.out.println("Turns without food is: " + turnsWithoutFood);
-		System.out.println("Max Age is: " + maxAge);
-		System.out.println("Diet Type is: " + type);
-		System.out.println("Herd Type is: " + herd);
-		System.out.println("Herd Type is: " + territorial);
+		System.out.println("Max Age is: " + (Integer.parseInt(maxAge)*10));
+		if (Integer.parseInt(type) == 0)
+		{
+			System.out.println("Diet Type is: Herbivore");
+		}
+		else
+		{
+			System.out.println("Diet Type is: Carnivore");
+		}
+		if (Integer.parseInt(herd) == 0)
+		{
+			System.out.println("Herd Type is: NO");
+		}
+		else
+		{
+			System.out.println("Herd Type is: YES");
 
+		}
+		if (Integer.parseInt(territorial) == 0)
+		{
+			System.out.println("Territorial is: NO");
+		}
+		else
+		{
+			System.out.println("Territorial is: YES");
+		}
 
 		// Close the scanner 
 		in.close(); 
 
 	} 
 
-	//Takes a integer input
-	//TODO: Do I need to input the scanner
+	/*Need scanner created as local variable because trying
+	 * to pass it into the method has and error because I'm converting
+	 * to a integer.*/
 	private static int betweenValueCheck(int var)
 	{
 		// Create a scanner for command line input 
 		Scanner in = new Scanner(System.in);
-		
+
 		//if variable it NOT between 1 and 10
-		if ( var < 1 || var > 10)
+		while ( var < 1 || var > 10)
 		{
 			System.out.println("Please enter a value between 1 and 10");
 			//converts string to integer
 			var = Integer.parseInt(in.nextLine());
 		} 
-		
+
 		return  var;
 	}
-	
+
 	//Takes integer input
 	private static int betweenValueCheck2(int var)
 	{
 		// Create a scanner for command line input 
 		Scanner in = new Scanner(System.in);
-		
+
 		//if variable it NOT between 1 and 10
-		if ( var != 0 && var != 1)
+		while ( var != 0 && var != 1)
 		{
 			System.out.println("Please enter a value between 0 and 1");
 			//converts input from string to integer
