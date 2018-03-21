@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class createDino { 
+public class CreateDino { 
 	//TODO: Put in for loop once excel file is read
 	public static void main(String[] args) { 
 
