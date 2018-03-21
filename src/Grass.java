@@ -16,8 +16,8 @@ public class Grass implements Positioned {
     private final int radius = 50;              //radius of grass in pixels
     
     
-    public Grass(int growthStage, int xLoc, int yLoc) {
-        setGrowthStage(growthStage);
+    public Grass(int xLoc, int yLoc) {
+        startGrowthStage();
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
@@ -34,6 +34,10 @@ public class Grass implements Positioned {
     
     public int getGrowthStage() {
         return growthStage;
+    }
+    
+    public void startGrowthStage() {
+        growthStage = (int)(Math.random()*4);
     }
     
     public void setGrowthStage(int growthStage) {

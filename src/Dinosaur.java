@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 import static java.lang.Double.MAX_VALUE;
 
 public class Dinosaur implements Positionable {
@@ -185,7 +186,7 @@ public class Dinosaur implements Positionable {
         
         for (Grass grass : grasses) {
             distance = distanceTo(grass);
-            if(distance < minDistance) {
+            if(distance < minDistance && grass.getGrowthStage() == 4) {
                 closestGrass = grass;
                 minDistance = Double.min(minDistance, distance);
             }

@@ -124,4 +124,18 @@ public class createDino {
 
 		return  var;
 	}
+	
+	private int takeNextInt() {
+	    Scanner in = new Scanner(System.in);
+	    int passedInt = 0;
+	    System.out.println("Enter a number 0 through 10:");
+	    try {
+	        passedInt = in.nextInt();
+        } catch (Exception e) {
+	        System.out.println("Numbers only please!");
+	        takeNextInt();
+        }
+        in.close();
+        return passedInt;
+    }
 }

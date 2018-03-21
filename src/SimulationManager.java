@@ -52,7 +52,7 @@ public class SimulationManager {
         int numGrasses = 5;
         
         for (int i = 0; i < numGrasses; i++) {
-            grasses.add(new Grass((int)(Math.random()*4), (int)(Math.random()*simulationSize), (int)(Math.random()*simulationSize)));
+            grasses.add(new Grass((int)(Math.random()*4), (int)(Math.random()*simulationSize)));
         }
     }
 }
