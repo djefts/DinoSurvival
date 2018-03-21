@@ -1,73 +1,88 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class createDino { 
+public class CreateDino { 
 	//TODO: Put in for loop once excel file is read
+	//TODO: Figure out how to fix Scanner
 	public static void main(String[] args) { 
 
 		// Create a scanner for command line input 
-		Scanner in = new Scanner(System.in); 
+		Scanner in = new Scanner(System.in);
+		CreateDino  createDino = new CreateDino();
 
 		//prompt for stat speed
-		System.out.println("Please enter Speed: stat between 1 and 10"); 
-		String speed = in.nextLine(); 
-		speed = Integer.toString(betweenValueCheck(Integer.parseInt(speed)));
+		System.out.println("Please enter Speed: stat between 1 and 10");
+		int speed;
+		speed = createDino.checkInt(in);
+		speed = createDino.betweenValueCheck(speed, in);
 
 		//prompt for stat Attack
 		System.out.println("Please enter Attack: stat between 1 and 10"); 
-		String attack = in.nextLine();
-		attack= Integer.toString(betweenValueCheck(Integer.parseInt(attack)));
+		int attack;
+		attack = createDino.checkInt(in);
+		attack = createDino.betweenValueCheck(attack, in);
 
 		//prompt for stat Defense
 		System.out.println("Please enter Defense: stat between 1 and 10"); 
-		String defense = in.nextLine();
-		defense = Integer.toString(betweenValueCheck(Integer.parseInt(defense)));
+		int defense;
+		defense = createDino.checkInt(in);
+		defense = createDino.betweenValueCheck(defense, in);
 
 
 		//prompt for stat Food before full
 		System.out.println("Please enter amount of Food before full: stat between 1 and 10"); 
-		String foodStorage = in.nextLine();
-		foodStorage = Integer.toString(betweenValueCheck(Integer.parseInt(foodStorage)));
+		int foodStorage;
+		foodStorage = createDino.checkInt(in);
+		foodStorage = createDino.betweenValueCheck(foodStorage, in);
 
 		//prompt for stat Water before full
 		System.out.println("Please enter amount of Water before full: stat between 1 and 10"); 
-		String waterStorage = in.nextLine();
-		waterStorage = Integer.toString(betweenValueCheck(Integer.parseInt(waterStorage)));
+		int waterStorage;
+		waterStorage = createDino.checkInt(in);
+		waterStorage = createDino.betweenValueCheck(waterStorage, in);
 
 		//prompt for stat Number of kids when reproducing
 		System.out.println("Please enter number of Kids when reproducing: stat between 1 and 10"); 
-		String kids = in.nextLine();
-		kids = Integer.toString(betweenValueCheck(Integer.parseInt(kids)));
+		int kids;
+		kids = createDino.checkInt(in);
+		kids= createDino.betweenValueCheck(kids, in);
 
 		//prompt for stat amount of food to reproduces 
 		System.out.println("Please enter the amount of food to reproduce: stat between 1 and 10"); 
-		String foodToReproduce = in.nextLine();
-		foodToReproduce = Integer.toString(betweenValueCheck(Integer.parseInt(foodToReproduce)));
+		int foodToReproduce;
+		foodToReproduce = createDino.checkInt(in);
+		foodToReproduce = createDino.betweenValueCheck(foodToReproduce, in);
 
 		//prompt for stat Turns without food
 		System.out.println("Please enter turns without food: stat between 1 and 10"); 
-		String turnsWithoutFood = in.nextLine();
-		turnsWithoutFood = Integer.toString(betweenValueCheck(Integer.parseInt(turnsWithoutFood)));
+		int turnsWithoutFood;
+		turnsWithoutFood = createDino.checkInt(in);
+		turnsWithoutFood = createDino.betweenValueCheck(turnsWithoutFood, in);
 
 		//prompt for stat for Max Age
 		System.out.println("Please enter Max Age: stat between 1 and 10"); 
-		String maxAge = in.nextLine();
-		maxAge = Integer.toString(betweenValueCheck(Integer.parseInt(maxAge)));
+		int maxAge;
+		maxAge = createDino.checkInt(in);
+		maxAge = createDino.betweenValueCheck(maxAge, in);
 
 		//prompt for stat for Diet Type
-		System.out.println("Please enter Diet Type: Herbivore = 0 | Carnivore = 1"); 
-		String type= in.nextLine();
-		type = Integer.toString(betweenValueCheck2(Integer.parseInt(type)));
+		System.out.println("Please enter Diet Type: Carnivore = 0 | Herbivore = 1"); 
+		int type;
+		type = createDino.checkInt(in);
+		type = createDino.betweenValueCheck2(type, in);
 
 		//prompt for stat for Herd
 		System.out.println("Please enter Herd type: No Herd = 0 | Herd = 1"); 
-		String herd= in.nextLine();
-		herd = Integer.toString(betweenValueCheck2(Integer.parseInt(herd)));
+		int herd;
+		herd = createDino.checkInt(in);
+		herd = createDino.betweenValueCheck2(herd, in);
 
 		//prompt for stat for Territorial
 		System.out.println("Please enter whether it is territorial: Not Territorial = 0 | Territorial= 1"); 
-		String territorial= in.nextLine();
-		territorial = Integer.toString(betweenValueCheck2(Integer.parseInt(territorial)));
+		int territorial;
+		territorial = createDino.checkInt(in);
+		territorial = createDino.betweenValueCheck2(territorial, in);
 
 		// Print Stats
 		System.out.println("Speed is: " + speed);
@@ -78,8 +93,8 @@ public class createDino {
 		System.out.println("Number of Kids when reproducing is: " + kids);
 		System.out.println("Amount to Food required to reproduce is: " + foodToReproduce);
 		System.out.println("Turns without food is: " + turnsWithoutFood);
-		System.out.println("Max Age is: " + (Integer.parseInt(maxAge)*10));
-		if (Integer.parseInt(type) == 0)
+		System.out.println("Max Age is: " + (maxAge*10));
+		if (type == 1)
 		{
 			System.out.println("Diet Type is: Herbivore");
 		}
@@ -87,7 +102,7 @@ public class createDino {
 		{
 			System.out.println("Diet Type is: Carnivore");
 		}
-		if (Integer.parseInt(herd) == 0)
+		if (herd == 0)
 		{
 			System.out.println("Herd Type is: NO");
 		}
@@ -96,7 +111,7 @@ public class createDino {
 			System.out.println("Herd Type is: YES");
 
 		}
-		if (Integer.parseInt(territorial) == 0)
+		if (territorial == 0)
 		{
 			System.out.println("Territorial is: NO");
 		}
@@ -110,39 +125,50 @@ public class createDino {
 
 	} 
 
-	/*Need scanner created as local variable because trying
-	 * to pass it into the method has and error because I'm converting
-	 * to a integer.*/
-	private static int betweenValueCheck(int var)
+	private int betweenValueCheck(int var, Scanner in)
 	{
-		// Create a scanner for command line input 
-		Scanner in = new Scanner(System.in);
 
 		//if variable it NOT between 1 and 10
 		while ( var < 1 || var > 10)
 		{
 			System.out.println("Please enter a value between 1 and 10");
 			//converts string to integer
-			var = Integer.parseInt(in.nextLine());
+			var = in.nextInt();
 		} 
 
 		return  var;
 	}
 
 	//Takes integer input
-	private static int betweenValueCheck2(int var)
+	private int betweenValueCheck2(int var, Scanner in)
 	{
-		// Create a scanner for command line input 
-		Scanner in = new Scanner(System.in);
 
 		//if variable it NOT between 1 and 10
-		while ( var != 0 && var != 1)
+		while (var != 0 && var != 1)
 		{
 			System.out.println("Please enter a value between 0 and 1");
 			//converts input from string to integer
-			var = Integer.parseInt(in.nextLine());
+			var = in.nextInt();
 		}
 
 		return  var;
 	}
+	//Checks if input is not a number
+	private int checkInt(Scanner in)
+	{
+		int varOut;
+		
+		try{
+		    varOut = in.nextInt();
+		}catch (Exception ex) {
+
+			System.out.println("Whole Numbers Only.");
+			//junk is getting rid of the bad input. It's JUNK
+			String junk = in.next();
+			varOut = checkInt(in);
+		}
+		
+		return varOut;	
+	}
+
 }
