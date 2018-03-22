@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -131,11 +132,17 @@ public class createDino {
 	    System.out.println("Enter a number 0 through 10:");
 	    try {
 	        passedInt = in.nextInt();
-        } catch (Exception e) {
+        } catch (InputMismatchException e) {
 	        System.out.println("Numbers only please!");
+	        String userSucks = in.next();
+	        in.close();
 	        takeNextInt();
         }
         in.close();
+	    if(passedInt<0 || passedInt >10) {
+	        System.out.println("Number must be between 0 and 10!");
+	        takeNextInt();
+        }
         return passedInt;
     }
 }

@@ -28,6 +28,26 @@ public class Dinosaur implements Positionable {
         setyLoc(yLoc);
     }
     
+    public void defaultStats() {
+        setHealth(10);
+        setSpeed(10);
+        setAttack(5);
+        setDefense(5);
+        setFoodStorage(7);
+        setWaterStorage(7);
+        setKids(5);
+        setFoodToReproduce(5);
+        setTurnsWithoutFood(10);
+        setMaxAge(20);
+        setHerd(false);
+        setTerritorial(false);
+        setHerbivore(true);
+        setVisionLength(50);
+        setRadius(5);
+        setxLoc(0);
+        setyLoc(0);
+    }
+    
     public int getHealth() {
         return health;
     }
@@ -223,19 +243,30 @@ public class Dinosaur implements Positionable {
     
     public void move(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
         Positioned food = wut2Eat(dinosaurs, grasses, waters);
-        int xLoc = food.getxLoc();
-        int yLoc = food.getyLoc();
-        if(distanceTo(food) <= getSpeed()) {
-            setxLoc(xLoc);
-            setyLoc(yLoc);
+        int xLocFood = food.getxLoc();
+        int yLocFood = food.getyLoc();
+        if(distanceTo(food) <= getSpeed()) {    //can move to food in one turn
+            setxLoc(xLocFood);
+            setyLoc(yLocFood);
         } else {
-            double dx = xLoc - getxLoc();                           //total change in x
-            double dy = yLoc - getyLoc();                           //total change in y
-            double theta = Math.atan(dx / dy);                      //θ = arctan(y/x)
-            int newxLoc = (int) (getSpeed() * Math.sin(theta));     //x = s*sin(θ)
-            int newyLoc = (int) (getSpeed() * Math.cos(theta));     //x = s*cos(θ)
-            setxLoc(getxLoc() + newxLoc);                           //newX = x+moveX
-            setyLoc(getyLoc() + newyLoc);                           //newY = y+moveY
+            int newXLoc;
+            int newYLoc;
+            double dx = xLocFood - getxLoc();   //total x distance to food
+            double dy = yLocFood - getyLoc();   //total y distance to food
+            double theta = Math.atan(dy / dx);      //θ = arctan(dy/dx)
+            
+            //rounding for accuracy
+            newXLoc = (int) Math.round(getSpeed() * Math.cos(theta));   //x=speed*cos(θ)
+            newYLoc = (int) Math.round(getSpeed() * Math.sin(theta));   //y=speed*sin(θ)
+            
+            setxLoc(getxLoc() + newXLoc);                           //newX = x+moveX
+            setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
         }
+    }
+    
+    public String toString() {
+        String output = "DINOSAUR\t";
+        output += "(" + getxLoc() + ", " + getyLoc() + ")";
+        return output;
     }
 }

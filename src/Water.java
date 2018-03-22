@@ -9,7 +9,7 @@ public class Water implements Positioned{
     private int radius = 100;
     
     public Water(int xLoc, int yLoc) {
-        setWaterImage();
+        //setWaterImage();
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
@@ -20,7 +20,7 @@ public class Water implements Positioned{
     
     public void setWaterImage() {
         try {
-            waterImage = ImageIO.read(new File("water.png"));
+            waterImage = ImageIO.read(new File("Documents/GitHub/DinoSurvivalPictures/Water.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -40,5 +40,11 @@ public class Water implements Positioned{
     
     public void setRadius(int radius) {
         this.radius = radius;
+    }
+    
+    public String toString() {
+        String output = "WATER\t";
+        output += "(" + getxLoc() + ", " + getyLoc() + ")";
+        return output;
     }
 }

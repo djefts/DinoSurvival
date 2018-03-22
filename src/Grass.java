@@ -6,6 +6,7 @@ import java.io.File;
 public class Grass implements Positioned {
     private int growthStage; //0-4
     
+    private BufferedImage currentStage;
     private BufferedImage grassStage1 = null;
     private BufferedImage grassStage2 = null;
     private BufferedImage grassStage3 = null;
@@ -18,6 +19,7 @@ public class Grass implements Positioned {
     
     public Grass(int xLoc, int yLoc) {
         startGrowthStage();
+        //setStagePic();
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
@@ -37,7 +39,7 @@ public class Grass implements Positioned {
     }
     
     public void startGrowthStage() {
-        growthStage = (int)(Math.random()*4);
+        growthStage = (int) (Math.random() * 4);
     }
     
     public void setGrowthStage(int growthStage) {
@@ -52,11 +54,6 @@ public class Grass implements Positioned {
     }
     
     public BufferedImage getStagePic() {
-        try {
-            readImages();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         
         if(getGrowthStage() == 4) {
             return grassStage4;
@@ -71,14 +68,25 @@ public class Grass implements Positioned {
         }
     }
     
-    public void readImages() throws Exception {
+    public void setStagePic() {
+        setStageImages();
+        currentStage = getStagePic();
+    }
+    
+    public void setStageImages() {
         try {
-            grassStage1 = ImageIO.read(new File("grassStage1.png"));
+            grassStage1 = ImageIO.read(new File("GrassStage1.png"));
             grassStage2 = ImageIO.read(new File("grassStage2.png"));
             grassStage3 = ImageIO.read(new File("grassStage3.png"));
             grassStage4 = ImageIO.read(new File("grassStage4.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public String toString() {
+        String output = "GRASS\tGrowth stage: " + getGrowthStage();
+        output += "\t(" + getxLoc() + ", " + getyLoc() + ")";
+        return output;
     }
 }
