@@ -1,33 +1,37 @@
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
-public class Water extends Edible {
+public class Water implements Positioned{
     private BufferedImage waterImage = null;
     private int xLoc;
     private int yLoc;
     private int radius = 100;
     
+    public Water(int xLoc, int yLoc) {
+        //setWaterImage();
+        this.xLoc = xLoc;
+        this.yLoc = yLoc;
+    }
+    
     public BufferedImage getWaterImage() {
         return waterImage;
     }
     
-    public void setWaterImage(BufferedImage waterImage) {
-        this.waterImage = waterImage;
+    public void setWaterImage() {
+        try {
+            waterImage = ImageIO.read(new File("Documents/GitHub/DinoSurvivalPictures/Water.png"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public int getxLoc() {
         return xLoc;
     }
     
-    public void setxLoc(int xLoc) {
-        this.xLoc = xLoc;
-    }
-    
     public int getyLoc() {
         return yLoc;
-    }
-    
-    public void setyLoc(int yLoc) {
-        this.yLoc = yLoc;
     }
     
     public int getRadius() {
@@ -36,5 +40,11 @@ public class Water extends Edible {
     
     public void setRadius(int radius) {
         this.radius = radius;
+    }
+    
+    public String toString() {
+        String output = "WATER\t";
+        output += "(" + getxLoc() + ", " + getyLoc() + ")";
+        return output;
     }
 }
