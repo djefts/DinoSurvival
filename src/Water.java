@@ -9,18 +9,18 @@ public class Water implements Positioned{
     private int radius = 100;
     
     public Water(int xLoc, int yLoc) {
-        //setWaterImage();
+        setWaterImage();
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
     
-    public BufferedImage getWaterImage() {
+    public BufferedImage getImage() {
         return waterImage;
     }
     
     public void setWaterImage() {
         try {
-            waterImage = ImageIO.read(new File("Documents/GitHub/DinoSurvivalPictures/Water.png"));
+            waterImage = ImageIO.read(getClass().getResource("/resources/images/Water.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

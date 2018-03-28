@@ -11,3 +11,4 @@ lib/
 /.recommenders
 CompileAndRun.sh
 /bin/
+/.classpath
