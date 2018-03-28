@@ -1,6 +1,5 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 
 public class Grass implements Positioned {
@@ -19,7 +18,7 @@ public class Grass implements Positioned {
     
     public Grass(int xLoc, int yLoc) {
         startGrowthStage();
-        //setStagePic();
+        setStagePic();
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
@@ -50,10 +49,11 @@ public class Grass implements Positioned {
         grow -= 1;
         if(grow <= 0 && growthStage != 4) {
             growthStage += 1;
+            grow = growthStage;
         }
     }
     
-    public BufferedImage getStagePic() {
+    public BufferedImage getImage() {
         
         if(getGrowthStage() == 4) {
             return grassStage4;
@@ -70,15 +70,15 @@ public class Grass implements Positioned {
     
     public void setStagePic() {
         setStageImages();
-        currentStage = getStagePic();
+        currentStage = getImage();
     }
     
     public void setStageImages() {
         try {
-            grassStage1 = ImageIO.read(new File("GrassStage1.png"));
-            grassStage2 = ImageIO.read(new File("grassStage2.png"));
-            grassStage3 = ImageIO.read(new File("grassStage3.png"));
-            grassStage4 = ImageIO.read(new File("grassStage4.png"));
+            grassStage1 = ImageIO.read(getClass().getResource("/resources/images/GrassStage1.png"));
+            grassStage2 = ImageIO.read(getClass().getResource("/resources/images/grassStage2.png"));
+            grassStage3 = ImageIO.read(getClass().getResource("/resources/images/grassStage3.png"));
+            grassStage4 = ImageIO.read(getClass().getResource("/resources/images/grassStage4.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

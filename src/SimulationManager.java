@@ -17,6 +17,8 @@ public class SimulationManager {
     
     public static void main(String[] args) {
         SimulationManager simulationManager = new SimulationManager();
+        simulationManager.setGrasses();
+        simulationManager.setWaters();
         simulationManager.loop();
     }
     
@@ -32,7 +34,7 @@ public class SimulationManager {
             
             }
             for (Dinosaur dinosaur : dinosaurs) {
-            
+                dinosaur.move(dinosaurs, grasses, waters);
             }
             
             simulationLength -= 1;
@@ -48,11 +50,37 @@ public class SimulationManager {
     }
     
     public void setGrasses() {
-        //grass position: (int)(Math.random()*simulationSize)
-        int numGrasses = 5;
-        
         for (int i = 0; i < numGrasses; i++) {
-            grasses.add(new Grass((int)(Math.random()*4), (int)(Math.random()*simulationSize)));
+            grasses.add(createAGrass());
         }
+    }
+    public Grass createAGrass() {
+        //grass position: (int)(Math.random()*simulationSize)
+        
+        int xLoc = (int)(Math.random()*simulationSize);
+        int yLoc = (int)(Math.random()*simulationSize);
+        for (Grass grass : grasses) {
+            if(grass.getxLoc()==xLoc && grass.getyLoc()==yLoc) {
+                return createAGrass();
+            }
+        }
+        return new Grass(xLoc, yLoc);
+    }
+    
+    public void setWaters() {
+        for (int i = 0; i < numWaters; i++) {
+            waters.add(createAWater());
+        }
+    }
+    public Water createAWater() {
+        //water position: (int)(Math.random()*simulationSize)
+        int xLoc = (int)(Math.random()*simulationSize);
+        int yLoc = (int)(Math.random()*simulationSize);
+        for (Water water : waters) {
+            if(water.getxLoc()==xLoc && water.getyLoc()==yLoc) {
+                return createAWater();
+            }
+        }
+        return new Water(xLoc, yLoc);
     }
 }
