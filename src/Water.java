@@ -42,6 +42,10 @@ public class Water implements Positioned{
         this.radius = radius;
     }
     
+    public String getName() {
+        return "water";
+    }
+    
     public String toString() {
         String output = "WATER\t";
         output += "(" + getxLoc() + ", " + getyLoc() + ")";

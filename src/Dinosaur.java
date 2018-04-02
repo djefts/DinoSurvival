@@ -1,6 +1,5 @@
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.lang.Double.MAX_VALUE;
 
@@ -244,26 +243,48 @@ public class Dinosaur implements Positionable {
     }
     
     public void move(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
-        Positioned food = wut2Eat(dinosaurs, grasses, waters);
-        int xLocFood = food.getxLoc();
-        int yLocFood = food.getyLoc();
-        if(distanceTo(food) <= getSpeed()) {    //can move to food in one turn
-            setxLoc(xLocFood);
-            setyLoc(yLocFood);
-        } else {
-            int newXLoc;
-            int newYLoc;
-            double dx = xLocFood - getxLoc();   //total x distance to food
-            double dy = yLocFood - getyLoc();   //total y distance to food
-            double theta = Math.atan(dy / dx);      //θ = arctan(dy/dx)
-            
-            //rounding for accuracy
-            newXLoc = (int) Math.round(getSpeed() * Math.cos(theta));   //x=speed*cos(θ)
-            newYLoc = (int) Math.round(getSpeed() * Math.sin(theta));   //y=speed*sin(θ)
-            
-            setxLoc(getxLoc() + newXLoc);                           //newX = x+moveX
-            setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
+        try { //to find food
+            Positioned food = wut2Eat(dinosaurs, grasses, waters);      //searching out target...
+    
+            int xLocFood = food.getxLoc();
+            int yLocFood = food.getyLoc();
+    
+            if(distanceTo(food) <= getSpeed()) {    //can move to food in one turn
+                setxLoc(xLocFood);
+                setyLoc(yLocFood);
+        
+                if(food.getName().equals("grass")) {
+                    //grass just got eaten. it now has to regrow
+                    grasses.get(grasses.indexOf(food)).setGrowthStage(0);
+                } else if(food.getName().equals("water")) {
+                    //you gots to do nothing. water doesn't go away
+                } else if(food.getName().equals("dinosaur")) {
+                    //remove the dinosaur you just ate
+                    dinosaurs.remove(food);
+                }
+            } else {
+                int newXLoc;
+                int newYLoc;
+                double dx = xLocFood - getxLoc();   //total x distance to food
+                double dy = yLocFood - getyLoc();   //total y distance to food
+                double theta = Math.atan(dy / dx);      //θ = arctan(dy/dx)
+        
+                //rounding for accuracy
+                newXLoc = (int) Math.round(getSpeed() * Math.cos(theta));   //x=speed*cos(θ)
+                newYLoc = (int) Math.round(getSpeed() * Math.sin(theta));   //y=speed*sin(θ)
+        
+                setxLoc(getxLoc() + newXLoc);                           //newX = x+moveX
+                setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
+            }
+        } catch(NullPointerException e) { //didn't find any food :(
+            //not yet moving
+            setxLoc(getxLoc());
+            setyLoc(getyLoc());
         }
+    }
+    
+    public String getName() {
+        return "dinosaur";
     }
     
     public String toString() {

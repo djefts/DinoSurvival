@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
@@ -74,48 +75,76 @@ class DinosaurTest {
     void move() {
         instantiation();
         
-        //System.out.println(dinosaur.wut2Eat(dinosaurs, grasses, waters));
-        
-        dinosaur.setHerbivore(true);                    //dino is a hungry herbivore
+        //dino is hungry herbivore, but there's no food...
+        ArrayList<Grass> grasses1 = new ArrayList<Grass>() {{
+            add(new Grass(0, 0, 0));
+            add(new Grass(10, 10, 3));
+            add(new Grass(25, 0, 1));
+        }};
+        dinosaur.setHerbivore(true);
+        dinosaur.setFoodStorage(8);
+        dinosaur.setWaterStorage(7);
+        dinosaur.move(dinosaurs, grasses1, waters);          //move where?
+        dinosaur.defaultStats();                            //reset dino to default
+    
+        //dino is a hungry herbivore
+        dinosaur.setHerbivore(true);
         dinosaur.setFoodStorage(8);
         dinosaur.setWaterStorage(7);
         dinosaur.move(dinosaurs, grasses, waters);          //move towards grassTest1
-        assertSame(0, dinosaur.getxLoc());
-        assertSame(10, dinosaur.getyLoc());
+        assertEquals(0, dinosaur.getxLoc());
+        assertEquals(10, dinosaur.getyLoc());
         dinosaur.defaultStats();                            //reset dino to default
-        
-        dinosaur.setHerbivore(false);                   //dino is a hungry carnivore
+    
+        //dino is a hungry carnivore
+        dinosaur.setHerbivore(false);
         dinosaur.setFoodStorage(8);
         dinosaur.setWaterStorage(7);
         dinosaur.move(dinosaurs, grasses, waters);          //move towards dinoTest1
-        assertSame(10, dinosaur.getxLoc());
-        assertSame(0, dinosaur.getyLoc());
+        assertEquals(10, dinosaur.getxLoc());
+        assertEquals(0, dinosaur.getyLoc());
         dinosaur.defaultStats();                            //reset dino to default
     
-        dinosaur.setHerbivore(false);                   //not vertical/horizontal movement test case
+        //not vertical/horizontal movement test case
+        //dino is hungry carnivore
+        dinosaur.setHerbivore(false);
         dinosaur.setFoodStorage(8);
         dinosaur.setWaterStorage(7);
         dinoTest1.setxLoc(40); dinoTest1.setyLoc(0); //move dinoTest1 outta the way. Time for dinoTest2 to die
         dinosaur.move(dinosaurs, grasses, waters);          //move towards dinoTest2
-        assertSame(6, dinosaur.getxLoc());
-        assertSame(8, dinosaur.getyLoc());
-        dinosaur.defaultStats();                            //reset dino to default
-        
-        dinosaur.setHerbivore(true);                    //dino is a thirsty herbivore
-        dinosaur.setFoodStorage(7);
-        dinosaur.setWaterStorage(8);
-        dinosaur.move(dinosaurs, grasses, waters);          //move towards waterTest1
-        assertSame(0, dinosaur.getxLoc());
-        assertSame(-10, dinosaur.getyLoc());
+        assertEquals(6, dinosaur.getxLoc());
+        assertEquals(8, dinosaur.getyLoc());
         dinosaur.defaultStats();                            //reset dino to default
     
-        dinosaur.setHerbivore(false);                    //dino is a thirsty carnivore
+        //dino is a thirsty herbivore
+        dinosaur.setHerbivore(true);
         dinosaur.setFoodStorage(7);
         dinosaur.setWaterStorage(8);
         dinosaur.move(dinosaurs, grasses, waters);          //move towards waterTest1
-        assertSame(0, dinosaur.getxLoc());
-        assertSame(-10, dinosaur.getyLoc());
+        assertEquals(0, dinosaur.getxLoc());
+        assertEquals(-10, dinosaur.getyLoc());
         dinosaur.defaultStats();                            //reset dino to default
+    
+        //dino is a thirsty carnivore
+        dinosaur.setHerbivore(false);
+        dinosaur.setFoodStorage(7);
+        dinosaur.setWaterStorage(8);
+        dinosaur.move(dinosaurs, grasses, waters);          //move towards waterTest1
+        assertEquals(0, dinosaur.getxLoc());
+        assertEquals(-10, dinosaur.getyLoc());
+        dinosaur.defaultStats();                            //reset dino to default
+        
+        //dino is going to eat a plant
+        Grass testy = new Grass(5, 5);                      //add a grass within reach of dinosaur
+        testy.setGrowthStage(4);
+        grasses.add(testy);
+        dinosaur.setHerbivore(true);
+        dinosaur.setFoodStorage(7);
+        dinosaur.setWaterStorage(6);
+        dinosaur.move(dinosaurs, grasses, waters);
+        assertEquals(testy.getxLoc(), dinosaur.getxLoc());
+        assertEquals(testy.getyLoc(), dinosaur.getyLoc());
+        dinosaur.defaultStats();
     }
     
     public void instantiation() {

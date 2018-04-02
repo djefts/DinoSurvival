@@ -3,21 +3,26 @@ import java.awt.image.BufferedImage;
 
 
 public class Grass implements Positioned {
+    private final int growthRate = 4;           //turns before grass will increase in stage
+    private final int radius = 50;              //radius of grass in pixels
     private int growthStage; //0-4
-    
     private BufferedImage currentStage;
     private BufferedImage grassStage1 = null;
     private BufferedImage grassStage2 = null;
     private BufferedImage grassStage3 = null;
     private BufferedImage grassStage4 = null;
-    private final int growthRate = 4;           //turns before grass will increase in stage
     private int grow = growthRate;
     private int xLoc, yLoc;
-    private final int radius = 50;              //radius of grass in pixels
     
     
     public Grass(int xLoc, int yLoc) {
         startGrowthStage();
+        setStagePic();
+        this.xLoc = xLoc;
+        this.yLoc = yLoc;
+    }
+    public Grass(int xLoc, int yLoc, int growthStage) {
+        this.growthStage = growthStage;
         setStagePic();
         this.xLoc = xLoc;
         this.yLoc = yLoc;
@@ -37,12 +42,12 @@ public class Grass implements Positioned {
         return growthStage;
     }
     
-    public void startGrowthStage() {
-        growthStage = (int) (Math.random() * 4);
-    }
-    
     public void setGrowthStage(int growthStage) {
         this.growthStage = growthStage;
+    }
+    
+    public void startGrowthStage() {
+        growthStage = (int) (Math.random() * 4);
     }
     
     public void timeToGrow() {
@@ -84,8 +89,13 @@ public class Grass implements Positioned {
         }
     }
     
+    public String getName() {
+        return "grass";
+    }
+    
     public String toString() {
         String output = "GRASS\tGrowth stage: " + getGrowthStage();
+        output += "\t\tTurns till growth: " + grow;
         output += "\t(" + getxLoc() + ", " + getyLoc() + ")";
         return output;
     }
