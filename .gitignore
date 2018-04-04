@@ -8,7 +8,8 @@ out/
 !/src/
 .recommenders
 lib/
-/.recommenders
+/bin/
+.project
 CompileAndRun.sh
 /bin/
 /.classpath
