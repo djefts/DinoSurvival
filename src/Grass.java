@@ -1,7 +1,10 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-
+/**
+ * Sources:
+ *      https://stackoverflow.com/questions/18309868/imageio-iioexception-cant-read-input-file
+ */
 public class Grass implements Positioned {
     private final int growthRate = 4;           //turns before grass will increase in stage
     private final int radius = 50;              //radius of grass in pixels
@@ -46,7 +49,7 @@ public class Grass implements Positioned {
         this.growthStage = growthStage;
     }
     
-    public void startGrowthStage() {
+    private void startGrowthStage() {
         growthStage = (int) (Math.random() * 4);
     }
     
@@ -58,27 +61,28 @@ public class Grass implements Positioned {
         }
     }
     
-    public BufferedImage getImage() {
-        
-        if(getGrowthStage() == 4) {
-            return grassStage4;
-        } else if(getGrowthStage() == 3) {
-            return grassStage3;
-        } else if(getGrowthStage() == 2) {
-            return grassStage2;
-        } else if(getGrowthStage() == 1) {
-            return grassStage1;
-        } else {
-            return null;
+    private BufferedImage getImage() {
+    
+        switch (getGrowthStage()) {
+            case 4:
+                return grassStage4;
+            case 3:
+                return grassStage3;
+            case 2:
+                return grassStage2;
+            case 1:
+                return grassStage1;
+            default:
+                return null;
         }
     }
     
-    public void setStagePic() {
+    private void setStagePic() {
         setStageImages();
         currentStage = getImage();
     }
     
-    public void setStageImages() {
+    private void setStageImages() {
         try {
             grassStage1 = ImageIO.read(getClass().getResource("/resources/images/GrassStage1.png"));
             grassStage2 = ImageIO.read(getClass().getResource("/resources/images/grassStage2.png"));
