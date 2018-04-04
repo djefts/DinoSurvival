@@ -7,6 +7,8 @@ interface Positioned {
     
     int getyLoc();
     
+    String getName();
+    
     default int distanceTo(Positioned pos) {
         int dx = pos.getxLoc() - this.getxLoc();
         int dy = pos.getyLoc() - this.getyLoc();

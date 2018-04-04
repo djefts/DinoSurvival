@@ -1,5 +1,3 @@
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
-
 import java.util.ArrayList;
 
 import static java.lang.Double.MAX_VALUE;
@@ -43,7 +41,7 @@ public class Dinosaur implements Positionable {
         setMaxAge(20);
         setHerd(false);
         setTerritorial(false);
-        setHerbivore(true);
+        setHerbivore(0);
         setVisionLength(50);
         setRadius(5);
         setxLoc(0);
@@ -54,15 +52,15 @@ public class Dinosaur implements Positionable {
         return health;
     }
     
-    public void setHealth(int health) {
+    void setHealth(int health) {
         this.health = health;
     }
     
-    public int getSpeed() {
+    private int getSpeed() {
         return speed;
     }
     
-    public void setSpeed(int speed) {
+    void setSpeed(int speed) {
         this.speed = speed;
     }
     
@@ -70,7 +68,7 @@ public class Dinosaur implements Positionable {
         return attack;
     }
     
-    public void setAttack(int attack) {
+    void setAttack(int attack) {
         this.attack = attack;
     }
     
@@ -78,7 +76,7 @@ public class Dinosaur implements Positionable {
         return defense;
     }
     
-    public void setDefense(int defense) {
+    void setDefense(int defense) {
         this.defense = defense;
     }
     
@@ -102,7 +100,7 @@ public class Dinosaur implements Positionable {
         return kids;
     }
     
-    public void setKids(int kids) {
+    private void setKids(int kids) {
         this.kids = kids;
     }
     
@@ -110,7 +108,7 @@ public class Dinosaur implements Positionable {
         return foodToReproduce;
     }
     
-    public void setFoodToReproduce(int foodToReproduce) {
+    private void setFoodToReproduce(int foodToReproduce) {
         this.foodToReproduce = foodToReproduce;
     }
     
@@ -118,7 +116,7 @@ public class Dinosaur implements Positionable {
         return turnsWithoutFood;
     }
     
-    public void setTurnsWithoutFood(int turnsWithoutFood) {
+    private void setTurnsWithoutFood(int turnsWithoutFood) {
         this.turnsWithoutFood = turnsWithoutFood;
     }
     
@@ -126,7 +124,7 @@ public class Dinosaur implements Positionable {
         return maxAge;
     }
     
-    public void setMaxAge(int maxAge) {
+    private void setMaxAge(int maxAge) {
         this.maxAge = maxAge;
     }
     
@@ -134,7 +132,7 @@ public class Dinosaur implements Positionable {
         return herd;
     }
     
-    public void setHerd(boolean herd) {
+    private void setHerd(boolean herd) {
         this.herd = herd;
     }
     
@@ -150,8 +148,13 @@ public class Dinosaur implements Positionable {
         return herbivore;
     }
     
-    public void setHerbivore(boolean herbivore) {
-        this.herbivore = herbivore;
+    public void setHerbivore(int herbivore) {
+        switch (herbivore) {
+            case 0:
+                this.herbivore=true;
+            case 1:
+                this.herbivore=false;
+        }
     }
     
     public int getxLoc() {
@@ -174,7 +177,7 @@ public class Dinosaur implements Positionable {
         return visionLength;
     }
     
-    public void setVisionLength(double visionLength) {
+    private void setVisionLength(double visionLength) {
         this.visionLength = visionLength;
     }
     
@@ -182,7 +185,7 @@ public class Dinosaur implements Positionable {
         return radius;
     }
     
-    public void setRadius(int radius) {
+    private void setRadius(int radius) {
         this.radius = radius;
     }
     
@@ -245,29 +248,77 @@ public class Dinosaur implements Positionable {
     
     public void move(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
         Positioned food = wut2Eat(dinosaurs, grasses, waters);
-        int xLocFood = food.getxLoc();
-        int yLocFood = food.getyLoc();
-        if(distanceTo(food) <= getSpeed()) {    //can move to food in one turn
-            setxLoc(xLocFood);
-            setyLoc(yLocFood);
-        } else {
-            int newXLoc;
-            int newYLoc;
-            double dx = xLocFood - getxLoc();   //total x distance to food
-            double dy = yLocFood - getyLoc();   //total y distance to food
-            double theta = Math.atan(dy / dx);      //θ = arctan(dy/dx)
-            
-            //rounding for accuracy
-            newXLoc = (int) Math.round(getSpeed() * Math.cos(theta));   //x=speed*cos(θ)
-            newYLoc = (int) Math.round(getSpeed() * Math.sin(theta));   //y=speed*sin(θ)
-            
-            setxLoc(getxLoc() + newXLoc);                           //newX = x+moveX
-            setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
+        try { //to find food
+            if(distanceTo(food) <= getSpeed()) {    //can move to food in one turn
+                moveInRange(dinosaurs, grasses, waters);
+            } else {
+                moveOutRange(dinosaurs, grasses, waters);
+            }
+        } catch (NullPointerException e) { //didn't find any food :(
+            //TODO make the dino search for alternate food source
+            //TODO make the dino wander if truly no food
+            //not yet moving
+            setxLoc(getxLoc());
+            setyLoc(getyLoc());
         }
     }
     
+    private void moveInRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
+        Positioned food = wut2Eat(dinosaurs, grasses, waters);      //searching out target...
+        
+        int xLocFood = food.getxLoc();
+        int yLocFood = food.getyLoc();
+        
+        setxLoc(xLocFood);
+        setyLoc(yLocFood);
+    
+        switch (food.getName()) {
+            case "grass":
+                //grass just got eaten. it now has to regrow
+                grasses.get(grasses.indexOf(food)).setGrowthStage(0);
+                break;
+            case "water":
+                //you gots to do nothing. water doesn't go away
+                break;
+            case "dinosaur":
+                //remove the dinosaur you just ate
+                dinosaurs.remove(food);
+                break;
+        }
+    }
+    
+    private void moveOutRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
+        Positioned food = wut2Eat(dinosaurs, grasses, waters);      //searching out target...
+    
+        //if there is not a valid food source found then the next 2 lines will throw a NullPointerException
+        int xLocFood = food.getxLoc();
+        int yLocFood = food.getyLoc();
+        
+        int newXLoc;
+        int newYLoc;
+        double dx = xLocFood - getxLoc();   //total x distance to food
+        double dy = yLocFood - getyLoc();   //total y distance to food
+        double theta = Math.atan(dy / dx);      //θ = arctan(dy/dx)
+    
+        //rounding for accuracy
+        newXLoc = (int) Math.round(getSpeed() * Math.cos(theta));   //x=speed*cos(θ)
+        newYLoc = (int) Math.round(getSpeed() * Math.sin(theta));   //y=speed*sin(θ)
+    
+        setxLoc(getxLoc() + newXLoc);                           //newX = x+moveX
+        setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
+    }
+    
+    public String getName() {
+        return "dinosaur";
+    }
+    
     public String toString() {
-        String output = "DINOSAUR\t";
+        String output = "DINOSAUR- ";
+        if(herbivore) {
+            output += "Herbivore\t";
+        } else {
+            output += "Carnivore\t";
+        }
         output += "(" + getxLoc() + ", " + getyLoc() + ")";
         return output;
     }

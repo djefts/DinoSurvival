@@ -36,13 +36,14 @@ import javafx.geometry.Side;
 import javafx.geometry.Insets;
 
 
+@SuppressWarnings("ALL")
 public class GUI extends Application {
 <<<<<<< HEAD
     
     //Define window properties
-    private int Height = 300;
-    private int Width = 450;
-    private boolean Resizeable = false; //To prevent user from resizing window
+    private final int Height = 300;
+    private final int Width = 450;
+    private final boolean Resizeable = false; //To prevent user from resizing window
     
     //Stage
     @Override
@@ -86,7 +87,7 @@ public class GUI extends Application {
         
         
         //create scene with all objects in it
-        Scene scene = new Scene(showSim, Height, Width, Color.GRAY);
+        Scene scene = new Scene(showSim, Width, Height, Color.GRAY);
         
         //Set stage properties
         primaryStage.setTitle("Dinosaur Survival Simulator");

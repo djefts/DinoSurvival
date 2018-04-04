@@ -2,33 +2,43 @@ import java.util.ArrayList;
 
 public class SimulationManager {
     
-    private final int minSimLength = 500;
-    private final int maxSimLength = 5000;
+    private final int minSimLength = 250;
+    private int maxSimLength = 5000;
     private int simulationLength;
+    int simulationTime = 0;
     
     private final int simulationSize = 50;        //length of each side of the simulation screen
     
-    private final int numGrasses = 5;
-    private final int numWaters = 10;
+    private final int numGrasses = 4;
+    private final int numWaters = 4;
     
     private ArrayList<Dinosaur> dinosaurs = new ArrayList<>();
     private ArrayList<Grass> grasses = new ArrayList<>();
     private ArrayList<Water> waters = new ArrayList<>();
     
+    public SimulationManager() {
+    
+    }
+    
+    public SimulationManager(int maxSimLength) {
+        this.maxSimLength = maxSimLength;
+    }
+    
     public static void main(String[] args) {
         SimulationManager simulationManager = new SimulationManager();
-        simulationManager.setGrasses();
-        simulationManager.setWaters();
         simulationManager.loop();
     }
     
     public void loop() {
         setSimulationLength();
         System.out.println(getSimulationLength());
+        setResources();
         
+        //simulation loop
         do {
             for (Grass grass : grasses) {
                 grass.timeToGrow();
+                System.out.println(grass);
             }
             for (Water water : waters) {
             
@@ -36,8 +46,8 @@ public class SimulationManager {
             for (Dinosaur dinosaur : dinosaurs) {
                 dinosaur.move(dinosaurs, grasses, waters);
             }
-            
             simulationLength -= 1;
+            simulationTime += 1;
         } while (simulationLength > 0);
     }
     
@@ -47,6 +57,11 @@ public class SimulationManager {
     
     public int getSimulationLength() {
         return simulationLength;
+    }
+    
+    public void setResources() {
+        setGrasses();
+        setWaters();
     }
     
     public void setGrasses() {
@@ -78,6 +93,11 @@ public class SimulationManager {
         int yLoc = (int)(Math.random()*simulationSize);
         for (Water water : waters) {
             if(water.getxLoc()==xLoc && water.getyLoc()==yLoc) {
+                return createAWater();
+            }
+        }
+        for (Grass grass : grasses) {
+            if(grass.getxLoc()==xLoc && grass.getyLoc()==yLoc) {
                 return createAWater();
             }
         }

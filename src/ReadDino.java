@@ -9,7 +9,7 @@ public class ReadDino
 	{
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
-		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<ArrayList<String>>();
+		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
 
 		//Open csv file
 		String fileName = "DinoTable.csv";
@@ -23,7 +23,7 @@ public class ReadDino
 			arrayOfDinos = readDino.processData(input, arrayOfDinos);
 			input.close();
 
-		}catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 
 		}
 	}

@@ -1,23 +1,31 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
-
+/**
+ * Sources:
+ *      https://stackoverflow.com/questions/18309868/imageio-iioexception-cant-read-input-file
+ */
 public class Grass implements Positioned {
+    private final int growthRate = 4;           //turns before grass will increase in stage
+    private final int radius = 50;              //radius of grass in pixels
     private int growthStage; //0-4
-    
     private BufferedImage currentStage;
     private BufferedImage grassStage1 = null;
     private BufferedImage grassStage2 = null;
     private BufferedImage grassStage3 = null;
     private BufferedImage grassStage4 = null;
-    private final int growthRate = 4;           //turns before grass will increase in stage
     private int grow = growthRate;
     private int xLoc, yLoc;
-    private final int radius = 50;              //radius of grass in pixels
     
     
     public Grass(int xLoc, int yLoc) {
         startGrowthStage();
+        setStagePic();
+        this.xLoc = xLoc;
+        this.yLoc = yLoc;
+    }
+    public Grass(int xLoc, int yLoc, int growthStage) {
+        this.growthStage = growthStage;
         setStagePic();
         this.xLoc = xLoc;
         this.yLoc = yLoc;
@@ -37,12 +45,12 @@ public class Grass implements Positioned {
         return growthStage;
     }
     
-    public void startGrowthStage() {
-        growthStage = (int) (Math.random() * 4);
-    }
-    
     public void setGrowthStage(int growthStage) {
         this.growthStage = growthStage;
+    }
+    
+    private void startGrowthStage() {
+        growthStage = (int) (Math.random() * 4);
     }
     
     public void timeToGrow() {
@@ -53,27 +61,28 @@ public class Grass implements Positioned {
         }
     }
     
-    public BufferedImage getImage() {
-        
-        if(getGrowthStage() == 4) {
-            return grassStage4;
-        } else if(getGrowthStage() == 3) {
-            return grassStage3;
-        } else if(getGrowthStage() == 2) {
-            return grassStage2;
-        } else if(getGrowthStage() == 1) {
-            return grassStage1;
-        } else {
-            return null;
+    private BufferedImage getImage() {
+    
+        switch (getGrowthStage()) {
+            case 4:
+                return grassStage4;
+            case 3:
+                return grassStage3;
+            case 2:
+                return grassStage2;
+            case 1:
+                return grassStage1;
+            default:
+                return null;
         }
     }
     
-    public void setStagePic() {
+    private void setStagePic() {
         setStageImages();
         currentStage = getImage();
     }
     
-    public void setStageImages() {
+    private void setStageImages() {
         try {
             grassStage1 = ImageIO.read(getClass().getResource("/resources/images/GrassStage1.png"));
             grassStage2 = ImageIO.read(getClass().getResource("/resources/images/grassStage2.png"));
@@ -84,8 +93,13 @@ public class Grass implements Positioned {
         }
     }
     
+    public String getName() {
+        return "grass";
+    }
+    
     public String toString() {
         String output = "GRASS\tGrowth stage: " + getGrowthStage();
+        output += "\t\tTurns till growth: " + grow;
         output += "\t(" + getxLoc() + ", " + getyLoc() + ")";
         return output;
     }

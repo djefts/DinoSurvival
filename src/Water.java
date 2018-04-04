@@ -1,7 +1,10 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
+/**
+ * Sources:
+ *      https://stackoverflow.com/questions/18309868/imageio-iioexception-cant-read-input-file
+ */
 public class Water implements Positioned{
     private BufferedImage waterImage = null;
     private int xLoc;
@@ -18,7 +21,7 @@ public class Water implements Positioned{
         return waterImage;
     }
     
-    public void setWaterImage() {
+    private void setWaterImage() {
         try {
             waterImage = ImageIO.read(getClass().getResource("/resources/images/Water.png"));
         } catch (Exception e) {
@@ -40,6 +43,10 @@ public class Water implements Positioned{
     
     public void setRadius(int radius) {
         this.radius = radius;
+    }
+    
+    public String getName() {
+        return "water";
     }
     
     public String toString() {
