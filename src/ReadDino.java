@@ -13,6 +13,7 @@ public class ReadDino
 
 		//Open csv file
 		String fileName = "DinoTable.csv";
+//		String fileName = "DinoTable.txt";
 		File file = new File(fileName);
 		ReadDino readDino = new ReadDino();
 
