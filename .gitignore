@@ -9,12 +9,7 @@ src/Pictures/
 !/src/
 .recommenders
 lib/
-<<<<<<< HEAD
 /bin/
 .project
-=======
-/.recommenders
 CompileAndRun.sh
 /bin/
->>>>>>> master
-*.fdt

@@ -1,8 +1,13 @@
+
 /********************************************************
  *GUI.java
  *Final Project: Dinosaur Survival Simulation 
  *Author: Christian A. Carrizales
- *Date: 03/19/2018
+ *Date:
+ *
+ *Variable List: 
+ * 
+ *Methods List: 
  **********************************************************/
 
 //Java import statements
@@ -36,6 +41,8 @@ public class GUI extends Application {
 	//Define window properties
 	public int Height = 300 ;
 	public int Width = 450 ;
+	public int HeightA = 600 ;
+	public int WidthA = 450 ;
 	private boolean Resizeable = false ; //To prevent user from resizing window
 	
 	//Stage 
@@ -43,24 +50,30 @@ public class GUI extends Application {
 	public void start (Stage primaryStage) {
 	
 	/***********************Scene One**************************/
-	YesNoPane ynp = new YesNoPane() ; 
-
-	//Create scene with all objects in it
-	Scene sceneOne = new Scene(ynp.showSim(), Height, Width, Color.GRAY);
+	CreateDinoPane cdp = new CreateDinoPane() ; 
+	
+	// Create scene with all objects in it 
+	Scene sceneOne = new Scene(cdp.dinoCreator(), Height, Width, Color.GRAY) ;
 		
 		
 	/***********************Scene Two**************************/	
-		//Pane playGround = new Pane();
-		
-		//Scene sceneTwo = new Scene(playGround, Color.GRAY);
+	YesNoPane ynp = new YesNoPane() ; 
+
+	//Create scene with all objects in it
+	Scene sceneTwo = new Scene(ynp.showSim(), Height, Width, Color.GRAY);
+	
+	/***********************Scene Three**************************/	
+	//Pane playGround = new Pane();
+	
+	//Scene sceneTwo = new Scene(playGround, Color.GRAY);
 	/**************************************************************/
 				
 		//Set stage properties
 		primaryStage.setTitle("Dinosaur Survival Simulator");
 		primaryStage.setResizable(Resizeable);
 		primaryStage.setScene(sceneOne); 
-		primaryStage.setHeight(Height);
-		primaryStage.setWidth(Width);		
+		primaryStage.setHeight(HeightA);
+		primaryStage.setWidth(WidthA);		
 		primaryStage.show();
 	      
 	}
