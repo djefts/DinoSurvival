@@ -18,74 +18,74 @@ public class CreateDino {
 		System.out.print("Please enter Speed: ");
 		int speed;
 		speed = createDino.checkInt(in);
-		speed = createDino.betweenValueCheck(speed, in);
+		speed = createDino.betweenValueCheck(speed, in, 1, 10);
+
 
 		//prompt for stat Attack
-		System.out.println("Please enter Attack: stat between 1 and 10");
+		System.out.println("Please enter Attack: ");
 		int attack;
 		attack = createDino.checkInt(in);
-		attack = createDino.betweenValueCheck(attack, in);
+		attack = createDino.betweenValueCheck(attack, in, 1, 10);
 
 		//prompt for stat Defense
-		System.out.println("Please enter Defense: stat between 1 and 10");
+		System.out.println("Please enter Defense: ");
 		int defense;
 		defense = createDino.checkInt(in);
-		defense = createDino.betweenValueCheck(defense, in);
-
+		defense= createDino.betweenValueCheck(defense, in, 1, 10);
 
 		//prompt for stat Food before full
-		System.out.println("Please enter amount of Food before full: stat between 1 and 10");
+		System.out.println("Please enter amount of Food before full: ");
 		int foodStorage;
 		foodStorage = createDino.checkInt(in);
-		foodStorage = createDino.betweenValueCheck(foodStorage, in);
+		foodStorage = createDino.betweenValueCheck(foodStorage, in, 1, 10);
 
 		//prompt for stat Water before full
-		System.out.println("Please enter amount of Water before full: stat between 1 and 10");
+		System.out.println("Please enter amount of Water before full: ");
 		int waterStorage;
 		waterStorage = createDino.checkInt(in);
-		waterStorage = createDino.betweenValueCheck(waterStorage, in);
+		waterStorage = createDino.betweenValueCheck(waterStorage, in, 1, 10);
 
 		//prompt for stat Number of kids when reproducing
-		System.out.println("Please enter number of Kids when reproducing: stat between 1 and 10");
+		System.out.println("Please enter number of Kids when reproducing: ");
 		int kids;
 		kids = createDino.checkInt(in);
-		kids = createDino.betweenValueCheck(kids, in);
+		kids = createDino.betweenValueCheck(kids, in, 1, 10);
 
 		//prompt for stat amount of food to reproduces
-		System.out.println("Please enter the amount of food to reproduce: stat between 1 and 10");
+		System.out.println("Please enter the amount of food to reproduce: ");
 		int foodToReproduce;
 		foodToReproduce = createDino.checkInt(in);
-		foodToReproduce = createDino.betweenValueCheck(foodToReproduce, in);
+		foodToReproduce = createDino.betweenValueCheck(foodToReproduce, in, 1, 10);
 
 		//prompt for stat Turns without food
-		System.out.println("Please enter turns without food: stat between 1 and 10");
+		System.out.println("Please enter turns without food: ");
 		int turnsWithoutFood;
 		turnsWithoutFood = createDino.checkInt(in);
-		turnsWithoutFood = createDino.betweenValueCheck(turnsWithoutFood, in);
+		turnsWithoutFood = createDino.betweenValueCheck(turnsWithoutFood, in, 1, 10);
 
 		//prompt for stat for Max Age
-		System.out.println("Please enter Max Age: stat between 1 and 10");
+		System.out.println("Please enter Max Age: ");
 		int maxAge;
 		maxAge = createDino.checkInt(in);
-		maxAge = createDino.betweenValueCheck(maxAge, in);
+		maxAge = createDino.betweenValueCheck(maxAge, in, 1, 10);
 
 		//prompt for stat for Diet Type
 		System.out.println("Please enter Diet Type: Carnivore = 0 | Herbivore = 1");
 		int type;
 		type = createDino.checkInt(in);
-		type = createDino.betweenValueCheck2(type, in);
+		type = createDino.betweenValueCheck(type, in, 0, 1);
 
 		//prompt for stat for Herd
 		System.out.println("Please enter Herd type: No Herd = 0 | Herd = 1");
 		int herd;
 		herd = createDino.checkInt(in);
-		herd = createDino.betweenValueCheck2(herd, in);
+		herd = createDino.betweenValueCheck(herd, in, 0, 1);
 
 		//prompt for stat for Territorial
 		System.out.println("Please enter whether it is territorial: Not Territorial = 0 | Territorial= 1");
 		int territorial;
 		territorial = createDino.checkInt(in);
-		territorial = createDino.betweenValueCheck2(territorial, in);
+		territorial = createDino.betweenValueCheck(territorial, in, 0, 1);
 
 		// Print Stats
 		System.out.println("Dinosaur Name: " + name);
@@ -120,42 +120,23 @@ public class CreateDino {
 
 	}
 
-	private int betweenValueCheck(int var, Scanner in) {
+	private int betweenValueCheck(int var, Scanner in, int minValue, int maxValue) {
 
 		//if variable it NOT between 1 and 10
-		while (var < 1 || var > 10) {
-			System.out.println("Please enter a value between 1 and 10");
+		while (var < minValue || var > maxValue) {
+			System.out.println("Please enter a value between " + minValue + " and " + maxValue);
 			
 			var = checkInt(in);
 			
 			if (var >= 1 && var <= 10)
 				return var;
 			
-			var = betweenValueCheck(var, in);
+			var = betweenValueCheck(var, in, minValue, maxValue);
 		}
 		
-
 		return var;
 	}
 
-	//Takes integer input
-	private int betweenValueCheck2(int var, Scanner in) {
-
-		//if variable it NOT between 1 and 10
-		if (var != 0 && var != 1) {
-			System.out.println("Please enter a value between 0 and 1");
-			
-			var = checkInt(in);
-			
-			if (var == 0 || var == 1)
-				return var;
-			
-			var = betweenValueCheck2(var, in);
-		
-		}
-
-		return var;
-	}
 
 	//Checks if input is not a number
 	private int checkInt(Scanner in) {
@@ -172,6 +153,13 @@ public class CreateDino {
 		}
 
 		return varOut;
+	}
+	
+	private int rangeCheck()
+	{
+		
+		
+		return;
 	}
 
 	/**
