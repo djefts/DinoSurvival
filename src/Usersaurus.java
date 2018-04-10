@@ -1,87 +1,88 @@
 import java.util.Scanner;
 
 
-public class CreateDino {
+public class Usersaurus {
     //TODO: Put in for loop once excel file is read
     //TODO: Figure out how to fix Scanner
     public static void main(String[] args) {
         
+        Dinosaur dino = new Dinosaur();
         // Create a scanner for command line input
         Scanner in = new Scanner(System.in);
-        CreateDino createDino = new CreateDino();
+        Usersaurus usersaurus = new Usersaurus();
         
         //prompt for stat speed
         System.out.print("Please enter Speed: ");
         int speed;
-        speed = createDino.checkInt(in);
-        speed = createDino.betweenValueCheck(speed, in);
+        speed = usersaurus.checkInt(in);
+        speed = usersaurus.betweenValueCheck(speed, in);
         
         //prompt for stat Attack
         System.out.println("Please enter Attack: stat between 1 and 10");
         int attack;
-        attack = createDino.checkInt(in);
-        attack = createDino.betweenValueCheck(attack, in);
+        attack = usersaurus.checkInt(in);
+        attack = usersaurus.betweenValueCheck(attack, in);
         
         //prompt for stat Defense
         System.out.println("Please enter Defense: stat between 1 and 10");
         int defense;
-        defense = createDino.checkInt(in);
-        defense = createDino.betweenValueCheck(defense, in);
+        defense = usersaurus.checkInt(in);
+        defense = usersaurus.betweenValueCheck(defense, in);
         
         
         //prompt for stat Food before full
         System.out.println("Please enter amount of Food before full: stat between 1 and 10");
         int foodStorage;
-        foodStorage = createDino.checkInt(in);
-        foodStorage = createDino.betweenValueCheck(foodStorage, in);
+        foodStorage = usersaurus.checkInt(in);
+        foodStorage = usersaurus.betweenValueCheck(foodStorage, in);
         
         //prompt for stat Water before full
         System.out.println("Please enter amount of Water before full: stat between 1 and 10");
         int waterStorage;
-        waterStorage = createDino.checkInt(in);
-        waterStorage = createDino.betweenValueCheck(waterStorage, in);
+        waterStorage = usersaurus.checkInt(in);
+        waterStorage = usersaurus.betweenValueCheck(waterStorage, in);
         
         //prompt for stat Number of kids when reproducing
         System.out.println("Please enter number of Kids when reproducing: stat between 1 and 10");
         int kids;
-        kids = createDino.checkInt(in);
-        kids = createDino.betweenValueCheck(kids, in);
+        kids = usersaurus.checkInt(in);
+        kids = usersaurus.betweenValueCheck(kids, in);
         
         //prompt for stat amount of food to reproduces
         System.out.println("Please enter the amount of food to reproduce: stat between 1 and 10");
         int foodToReproduce;
-        foodToReproduce = createDino.checkInt(in);
-        foodToReproduce = createDino.betweenValueCheck(foodToReproduce, in);
+        foodToReproduce = usersaurus.checkInt(in);
+        foodToReproduce = usersaurus.betweenValueCheck(foodToReproduce, in);
         
         //prompt for stat Turns without food
         System.out.println("Please enter turns without food: stat between 1 and 10");
         int turnsWithoutFood;
-        turnsWithoutFood = createDino.checkInt(in);
-        turnsWithoutFood = createDino.betweenValueCheck(turnsWithoutFood, in);
+        turnsWithoutFood = usersaurus.checkInt(in);
+        turnsWithoutFood = usersaurus.betweenValueCheck(turnsWithoutFood, in);
         
         //prompt for stat for Max Age
         System.out.println("Please enter Max Age: stat between 1 and 10");
         int maxAge;
-        maxAge = createDino.checkInt(in);
-        maxAge = createDino.betweenValueCheck(maxAge, in);
+        maxAge = usersaurus.checkInt(in);
+        maxAge = usersaurus.betweenValueCheck(maxAge, in);
         
         //prompt for stat for Diet Type
         System.out.println("Please enter Diet Type: Carnivore = 0 | Herbivore = 1");
         int type;
-        type = createDino.checkInt(in);
-        type = createDino.betweenValueCheck2(type, in);
+        type = usersaurus.checkInt(in);
+        type = usersaurus.betweenValueCheck2(type, in);
         
         //prompt for stat for Herd
         System.out.println("Please enter Herd type: No Herd = 0 | Herd = 1");
         int herd;
-        herd = createDino.checkInt(in);
-        herd = createDino.betweenValueCheck2(herd, in);
+        herd = usersaurus.checkInt(in);
+        herd = usersaurus.betweenValueCheck2(herd, in);
         
         //prompt for stat for Territorial
         System.out.println("Please enter whether it is territorial: Not Territorial = 0 | Territorial= 1");
         int territorial;
-        territorial = createDino.checkInt(in);
-        territorial = createDino.betweenValueCheck2(territorial, in);
+        territorial = usersaurus.checkInt(in);
+        territorial = usersaurus.betweenValueCheck2(territorial, in);
         
         // Print Stats
         System.out.println("Speed is: " + speed);
@@ -161,8 +162,8 @@ public class CreateDino {
      * Alternative method to checkInt, betweenValueCheck and betweenValueCheck2
      * Combines the 3 methods into 1
      * Slightly more efficient, a little easier to read, and keeps Scanner local to method
-     *      while making sure it is only open when necessary
-     */
+     *      and making sure it is only open when necessary
+     **/
     /*public int checkInput(int minValue, int maxValue) {
         int varOut;
         Scanner in = new Scanner(System.in);
