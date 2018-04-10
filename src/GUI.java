@@ -6,7 +6,7 @@
  *Date:
  *
  *Variable List: 
- *
+ * 
  *Methods List: 
  **********************************************************/
 
@@ -36,7 +36,6 @@ import javafx.geometry.Side;
 import javafx.geometry.Insets;
 
 
-@SuppressWarnings("ALL")
 public class GUI extends Application {
     SimulationManager simulationManager = new SimulationManager();
 	//Define window properties
@@ -75,6 +74,9 @@ public class GUI extends Application {
 		primaryStage.setScene(sceneOne);
 		primaryStage.setHeight(HeightA);
 		primaryStage.setWidth(WidthA);
+		primaryStage.setScene(sceneTwo); 
+		primaryStage.setHeight(Height);
+		primaryStage.setWidth(Width);		
 		primaryStage.show();
 	 
 	}

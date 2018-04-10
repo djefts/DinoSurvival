@@ -14,9 +14,15 @@ public class ReadDino
 		//Open csv file
 		String fileName = "DinoTable.csv";
 		//String fileName = "DinoTable.txt";
+		//		String fileName = "DinoTable.csv";
+		//String fileName = "DinoTable.txt";
+		String fileName = "/resources/DinoTable.txt";
 		File file = new File(fileName);
 		ReadDino readDino = new ReadDino();
 
+		if (!file.exists()) {
+			System.out.println("file does not exist");
+		}
 		//Read file
 		try {
 			Scanner input = new Scanner(file);
@@ -24,26 +30,51 @@ public class ReadDino
 			input.close();
 
 		} catch (FileNotFoundException e) {
-
+			System.out.println("Apparently the file wasn't found");
 		}
+		
+		readDino.printArray(arrayOfDinos);
 	}
-	
+
 	private ArrayList<ArrayList<String>> processData(Scanner input,  ArrayList<ArrayList<String>> arrayOfDinos)
 	{
-		int index = 0;
-		while(input.hasNext())
+		//boolean .hasNextLine() returns true if there is another line
+		while(input.hasNextLine())
 		{
-			String line = input.next();
-			String[] stats = line.split(",");
-			//goes through similar to column
-			for(String s : stats)
+			String line = input.nextLine();
+			String[] lineOfStats = line.split(",");
+			//Creates a single ArrayList type string
+			ArrayList<String> singleDino = new ArrayList<String>();
+			
+			
+			//goes through a single line similar to column
+			//s is the individual stat and lineOfStat is the entire row
+			//TODO: how do the for loop work
+			for(String s : lineOfStats)
 			{
-				arrayOfDinos.get(index).add(s);
+				//Adds individual stats to a ArrayList of Strings
+				singleDino.add(s); 			
 			}
-			//update row or dinosaur we're on
-			index++;
+			//Adds an entire row to the ArrayList
+			arrayOfDinos.add(singleDino);
 		}
 		return arrayOfDinos;
 	}
+	//Print the dinosaur results
+	private void printArray(ArrayList<ArrayList<String>> arrayOfDinos)
+	{
+		
+		//print first line with Dinos and their stats
+		//how is the for loop working if Dino is blank
+		for (ArrayList<String> dino : arrayOfDinos  )
+		{	
+			for (String s : dino)
+			{
+				System.out.print(s + "\t");
+			}
+			System.out.println();
+		}
 
+		return;
+	}
 }
