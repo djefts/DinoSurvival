@@ -22,7 +22,9 @@ public class Dinosaur implements Positionable {
     private int xLoc;               //current x pixel location of the dino
     private int yLoc;               //current y pixel location of the dino
     
+    public Dinosaur() {
     
+    }
     public Dinosaur(int xLoc, int yLoc) {
         setxLoc(xLoc);
         setyLoc(yLoc);
@@ -152,8 +154,14 @@ public class Dinosaur implements Positionable {
         switch (herbivore) {
             case 0:
                 this.herbivore=true;
+                break;
             case 1:
                 this.herbivore=false;
+                break;
+            default:
+                this.herbivore=true;
+                break;
+                
         }
     }
     

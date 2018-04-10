@@ -1,10 +1,15 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadDino
 {
+    public void method() {
+    
+    }
+		
 	public static void main (String []args) 
 	{
 		//Create array of array of strings
@@ -12,15 +17,21 @@ public class ReadDino
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
 
 		//Open csv file
+<<<<<<< HEAD:src/ReadDino.java
 		//		String fileName = "DinoTable.csv";
 		String fileName = "DinoTable.txt";
 		//String fileName = "/resources/DinoTable.txt";
 		File file = new File(fileName);
+=======
+		//String fileName = "DinoTable.csv";
+		//String fileName = "DinoTable.txt";
+		//String fileName = "DinoTable.csv";
+		//String fileName = "DinoTable.txt";
+>>>>>>> master:src/DataIO/ReadDino.java
 		ReadDino readDino = new ReadDino();
-
-		if (!file.exists()) {
-			System.out.println("file does not exist");
-		}
+        URL url = readDino.getClass().getResource("DinoTable.txt");
+        File file = new File(url.getPath());
+  
 		//Read file
 		try {
 			Scanner input = new Scanner(file);
@@ -28,7 +39,7 @@ public class ReadDino
 			input.close();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Apparently the file wasn't found");
+			System.out.println("\n\nFile not found");
 		}
 		
 		readDino.printArray(arrayOfDinos);

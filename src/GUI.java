@@ -27,7 +27,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane; 
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -37,7 +37,7 @@ import javafx.geometry.Insets;
 
 
 public class GUI extends Application {
-	
+    SimulationManager simulationManager = new SimulationManager();
 	//Define window properties
 	public int Height = 300 ;
 	public int Width = 450 ;
@@ -45,44 +45,46 @@ public class GUI extends Application {
 	public int WidthA = 450 ;
 	private boolean Resizeable = false ; //To prevent user from resizing window
 	
-	//Stage 
+	//Stage
 	@Override
 	public void start (Stage primaryStage) {
 	
 	/***********************Scene One**************************/
-	CreateDinoPane cdp = new CreateDinoPane() ; 
+	CreateDinoPane cdp = new CreateDinoPane() ;
 	
-	// Create scene with all objects in it 
+	// Create scene with all objects in it
 	Scene sceneOne = new Scene(cdp.dinoCreator(), Height, Width, Color.GRAY) ;
-		
-		
-	/***********************Scene Two**************************/	
-	YesNoPane ynp = new YesNoPane() ; 
+	
+	
+	/***********************Scene Two**************************/
+	YesNoPane ynp = new YesNoPane() ;
 
 	//Create scene with all objects in it
 	Scene sceneTwo = new Scene(ynp.showSim(), Height, Width, Color.GRAY);
 	
-	/***********************Scene Three**************************/	
+	/***********************Scene Three**************************/
 	//Pane playGround = new Pane();
 	
 	//Scene sceneTwo = new Scene(playGround, Color.GRAY);
 	/**************************************************************/
-				
+		
 		//Set stage properties
 		primaryStage.setTitle("Dinosaur Survival Simulator");
 		primaryStage.setResizable(Resizeable);
+		primaryStage.setScene(sceneOne);
+		primaryStage.setHeight(HeightA);
+		primaryStage.setWidth(WidthA);
 		primaryStage.setScene(sceneTwo); 
 		primaryStage.setHeight(Height);
-		primaryStage.setWidth(Width);		
+		primaryStage.setWidth(Width);
 		primaryStage.show();
-	      
+	 
 	}
 	
 	//Start program (for Eclipse use only)
 	public static void main(String[] args) {
-		 Application.launch(args);	
+		 Application.launch(args);
 	}
-	
 }
 
 
