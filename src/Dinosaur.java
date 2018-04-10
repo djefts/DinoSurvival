@@ -283,7 +283,7 @@ public class Dinosaur implements Positionable {
         switch (food.getName()) {
             case "grass":
                 //grass just got eaten. it now has to regrow
-                grasses.get(grasses.indexOf(food)).setGrowthStage(0);
+                grasses.get(grasses.indexOf(food)).setGrowthStage(1);
                 break;
             case "water":
                 //you gots to do nothing. water doesn't go away
@@ -314,6 +314,10 @@ public class Dinosaur implements Positionable {
     
         setxLoc(getxLoc() + newXLoc);                           //newX = x+moveX
         setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
+    }
+    
+    private void BATTLE(Dinosaur attacked) {
+        
     }
     
     public String getName() {
