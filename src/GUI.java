@@ -76,7 +76,7 @@ public class GUI extends Application {
 		primaryStage.setWidth(WidthA);
 		primaryStage.setScene(sceneTwo); 
 		primaryStage.setHeight(Height);
-		primaryStage.setWidth(Width);		
+		primaryStage.setWidth(Width);
 		primaryStage.show();
 	 
 	}
