@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * https://stackoverflow.com/questions/28563684/filenotfoundexception-and-file-exists
+ */
 public class ReadDino
 {
     public void method() {
@@ -17,12 +20,11 @@ public class ReadDino
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
 
 		//Open csv file
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
 		ReadDino readDino = new ReadDino();
         URL url = readDino.getClass().getResource("DinoTable.txt");
+        //URL url = readDino.getClass().getResource("DinoTable.csv");
+        //URL url = readDino.getClass().getResource("DinoTable.xlsx");
+        
         File file = new File(url.getPath());
   
 		//Read file
