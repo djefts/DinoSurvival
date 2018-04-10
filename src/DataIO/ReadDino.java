@@ -1,3 +1,5 @@
+package DataIO;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -7,7 +9,7 @@ import java.util.Scanner;
 public class ReadDino
 {
     public void method() {
-    
+        
     }
 		
 	public static void main (String []args) 
@@ -15,19 +17,18 @@ public class ReadDino
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-
-		//Open csv file
-<<<<<<< HEAD:src/ReadDino.java
+		HEAD:src/ReadDino.java
 		//		String fileName = "DinoTable.csv";
 		String fileName = "DinoTable.txt";
 		//String fileName = "/resources/DinoTable.txt";
 		File file = new File(fileName);
-=======
+
 		//String fileName = "DinoTable.csv";
 		//String fileName = "DinoTable.txt";
 		//String fileName = "DinoTable.csv";
 		//String fileName = "DinoTable.txt";
->>>>>>> master:src/DataIO/ReadDino.java
+		master:src/DataIO/ReadDino.java
+		
 		ReadDino readDino = new ReadDino();
         URL url = readDino.getClass().getResource("DinoTable.txt");
         File file = new File(url.getPath());
