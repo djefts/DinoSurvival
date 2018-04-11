@@ -16,10 +16,6 @@ public class ReadDino
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-		HEAD:src/ReadDino.java
-		
-		String fileName = "DinoTable.txt";
-<<<<<<< HEAD
 		
 		ReadDino readDino = new ReadDino();
         URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
