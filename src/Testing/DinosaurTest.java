@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Sources:
  * https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line
  * https://stackoverflow.com/questions/924285/efficiency-of-java-double-brace-initialization
+ * https://stackoverflow.com/questions/16526860/jetbrains-intellij-keyboard-shortcut-to-collapse-all-methods
  */
 
 class DinosaurTest {
@@ -54,6 +55,11 @@ class DinosaurTest {
     }
     
     @Test
+    void BATTLE() {
+    
+    }
+    
+    @Test
     /**
      * determine what the dino should try to attack
      */
@@ -70,6 +76,8 @@ class DinosaurTest {
         dinosaur.setWaterStorage(10);
         assertSame(waterTest1, dinosaur.wut2Eat(dinosaurs, grasses, waters));
     }
+    
+    
     
     @Test
     void move() {

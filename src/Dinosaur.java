@@ -3,11 +3,14 @@ import java.util.ArrayList;
 import static java.lang.Double.MAX_VALUE;
 
 public class Dinosaur implements Positionable {
-    private int health;             //health of the dinosaur
+    private int health;             //current health of the dinosaur
+    private int maxHealth;          //max health of the dinosaur
     private int speed;              //how far a dino can move in one "turn"
     private int attack;             //attack of the dino, compared to defense
     private int defense;            //defense of the dino, used when being attacked
+    private int curFood;            //amount of food the dino currently has
     private int foodStorage;        //how much food the dino can hold before it is 'full'
+    private int curWater;           //how much water the dino currently has
     private int waterStorage;       //how much water the dino can hold before it is 'full'
     private int kids;               //how many kids are created when the dino reproduces
     private int foodToReproduce;    //how much food a dino uses when reproducing
@@ -26,16 +29,20 @@ public class Dinosaur implements Positionable {
     
     }
     public Dinosaur(int xLoc, int yLoc) {
+        addFood(getFoodStorage()/2);
+        addWater(getWaterStorage()/2);
         setxLoc(xLoc);
         setyLoc(yLoc);
     }
     
     public void defaultStats() {
-        setHealth(10);
+        addHealth(10);
         setSpeed(10);
         setAttack(5);
         setDefense(5);
+        addFood(4);
         setFoodStorage(7);
+        addWater(4);
         setWaterStorage(7);
         setKids(5);
         setFoodToReproduce(5);
@@ -54,15 +61,18 @@ public class Dinosaur implements Positionable {
         return health;
     }
     
-    void setHealth(int health) {
-        this.health = health;
+    public void addHealth(int added) {
+        this.health += added;
+        if(this.health>maxHealth) {
+            this.health = maxHealth;
+        }
     }
     
     private int getSpeed() {
         return speed;
     }
     
-    void setSpeed(int speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
     
@@ -70,7 +80,7 @@ public class Dinosaur implements Positionable {
         return attack;
     }
     
-    void setAttack(int attack) {
+    public void setAttack(int attack) {
         this.attack = attack;
     }
     
@@ -78,7 +88,7 @@ public class Dinosaur implements Positionable {
         return defense;
     }
     
-    void setDefense(int defense) {
+    public void setDefense(int defense) {
         this.defense = defense;
     }
     
@@ -197,6 +207,28 @@ public class Dinosaur implements Positionable {
         this.radius = radius;
     }
     
+    public int getCurFood() {
+        return curFood;
+    }
+    
+    public void addFood(int curFood) {
+        this.curFood += curFood;
+        if(curFood>foodStorage) {
+            this.curFood=foodStorage;
+        }
+    }
+    
+    public int getCurWater() {
+        return curWater;
+    }
+    
+    public void addWater(int curWater) {
+        this.curWater += curWater;
+        if(curWater>waterStorage) {
+            this.curWater=waterStorage;
+        }
+    }
+    
     public Dinosaur closestDinosaur(ArrayList<Dinosaur> dinosaurs) {
         Dinosaur closestDinosaur = null;
         double distance;
@@ -277,19 +309,26 @@ public class Dinosaur implements Positionable {
         int xLocFood = food.getxLoc();
         int yLocFood = food.getyLoc();
         
-        setxLoc(xLocFood);
-        setyLoc(yLocFood);
+        this.setxLoc(xLocFood);
+        this.setyLoc(yLocFood);
     
         switch (food.getName()) {
             case "grass":
                 //grass just got eaten. it now has to regrow
                 grasses.get(grasses.indexOf(food)).setGrowthStage(1);
+                this.addHealth(4);
+                this.addFood(4);
                 break;
             case "water":
                 //you gots to do nothing. water doesn't go away
+                this.addHealth(1);
+                this.addWater(4);
                 break;
             case "dinosaur":
                 //remove the dinosaur you just ate
+                battle(dinosaurs.get(dinosaurs.indexOf(food)));
+                this.addFood(dinosaurs.get(dinosaurs.indexOf(food)).curFood/2);
+                this.addHealth(4);
                 dinosaurs.remove(food);
                 break;
         }
@@ -316,8 +355,18 @@ public class Dinosaur implements Positionable {
         setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
     }
     
-    private void BATTLE(Dinosaur attacked) {
+    private void battle(Dinosaur dino) {
+        //attack vs defense
+        int dH = getAttack()-dino.getDefense();
+        if(dH > 0) {        //dinosaur's attack is greater than the other guy's defense
+            dino.addHealth(dino.getHealth()-dH);
+        } else if(dH<0) {   //defender has the big defense
         
+        }
+    }
+    
+    public void timeToReproduce() {
+    
     }
     
     public String getName() {
