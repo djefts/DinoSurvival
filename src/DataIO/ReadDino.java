@@ -9,33 +9,16 @@ import java.util.Scanner;
 public class ReadDino
 {
 
-<<<<<<< HEAD
-=======
-		
->>>>>>> master
 	public static void main (String []args) 
 	{
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-<<<<<<< HEAD
-
-
-		ReadDino readDino = new ReadDino();
-		URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
-		//URL url = readDino.getClass().getResource("DinoTable.csv");
-		//URL url = readDino.getClass().getResource("DinoTable.xlsx");
-		
-		File file = new File(url.getPath());
-		System.out.println(new File("DinoTable.txt").getAbsolutePath());
-
-=======
 		
 		ReadDino readDino = new ReadDino();
         URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
         File file = new File(url.getPath());
-  
->>>>>>> master
+
 		//Read file
 		try {
 			Scanner input = new Scanner(file);
@@ -91,8 +74,4 @@ public class ReadDino
 
 		return;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
