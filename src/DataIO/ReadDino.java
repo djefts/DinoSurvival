@@ -1,6 +1,3 @@
-@@ -1,90 +1,34 @@
-package DataIO;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -9,12 +6,10 @@ import java.util.Scanner;
 
 /**
  * https://stackoverflow.com/questions/28563684/filenotfoundexception-and-file-exists
+ * https://stackoverflow.com/questions/10657315/git-merge-left-head-marks-in-my-files
  */
 public class ReadDino
 {
-    public void method() {
-        
-    }
 		
 	public static void main (String []args) 
 	{
@@ -22,22 +17,20 @@ public class ReadDino
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
 		HEAD:src/ReadDino.java
-		//		String fileName = "DinoTable.csv";
+		
 		String fileName = "DinoTable.txt";
-	public void method() {
-		//public class ReadDino
-		//String fileName = "/resources/DinoTable.txt";
-		File file = new File(fileName);
-
 <<<<<<< HEAD
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
-		master:src/DataIO/ReadDino.java
 		
 		ReadDino readDino = new ReadDino();
-        URL url = readDino.getClass().getResource("DinoTable.txt");
+        URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
+        //URL url = readDino.getClass().getResource("DinoTable.csv");
+        //URL url = readDino.getClass().getResource("DinoTable.xlsx");
+        
+        System.out.println(new File("DinoTable.txt").getAbsolutePath());
+        
+        
+        System.out.println(readDino.getClass().getResource("DinoTable.txt"));
+        
         File file = new File(url.getPath());
   
 		//Read file
@@ -52,13 +45,6 @@ public class ReadDino
 		
 		readDino.printArray(arrayOfDinos);
 	}
-=======
-		//Open csv file
->>>>>>> master
-		ReadDino readDino = new ReadDino();
-		URL url = readDino.getClass().getResource("DinoTable.txt");
-		//URL url = readDino.getClass().getResource("DinoTable.csv");
-		//URL url = readDino.getClass().getResource("DinoTable.xlsx");
 
 	private ArrayList<ArrayList<String>> processData(Scanner input,  ArrayList<ArrayList<String>> arrayOfDinos)
 	{
@@ -98,9 +84,5 @@ public class ReadDino
 			}
 			System.out.println();
 		}
-		File file = new File(url.getPath());
-
-		return;
 	}
 }
-		//Read file
