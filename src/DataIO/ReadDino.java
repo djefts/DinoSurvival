@@ -1,5 +1,3 @@
-package DataIO;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -17,6 +15,14 @@ public class ReadDino
 		
 		ReadDino readDino = new ReadDino();
         URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
+        //URL url = readDino.getClass().getResource("DinoTable.csv");
+        //URL url = readDino.getClass().getResource("DinoTable.xlsx");
+        
+        System.out.println(new File("DinoTable.txt").getAbsolutePath());
+        
+        
+        System.out.println(readDino.getClass().getResource("DinoTable.txt"));
+        
         File file = new File(url.getPath());
 
 		//Read file
@@ -31,7 +37,6 @@ public class ReadDino
 
 		readDino.printArray(arrayOfDinos);
 	}
-
 
 	private ArrayList<ArrayList<String>> processData(Scanner input,  ArrayList<ArrayList<String>> arrayOfDinos)
 	{
@@ -71,7 +76,5 @@ public class ReadDino
 			}
 			System.out.println();
 		}
-
-		return;
 	}
 }
