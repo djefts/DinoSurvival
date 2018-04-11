@@ -1,4 +1,3 @@
-@@ -1,90 +1,34 @@
 package DataIO;
 
 import java.io.File;
@@ -7,39 +6,24 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * https://stackoverflow.com/questions/28563684/filenotfoundexception-and-file-exists
- */
 public class ReadDino
 {
-    public void method() {
-        
-    }
-		
+
 	public static void main (String []args) 
 	{
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-		HEAD:src/ReadDino.java
-		//		String fileName = "DinoTable.csv";
-		String fileName = "DinoTable.txt";
-	public void method() {
-		//public class ReadDino
-		//String fileName = "/resources/DinoTable.txt";
-		File file = new File(fileName);
 
-<<<<<<< HEAD
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
-		master:src/DataIO/ReadDino.java
-		
+
 		ReadDino readDino = new ReadDino();
-        URL url = readDino.getClass().getResource("DinoTable.txt");
-        File file = new File(url.getPath());
-  
+		URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
+		//URL url = readDino.getClass().getResource("DinoTable.csv");
+		//URL url = readDino.getClass().getResource("DinoTable.xlsx");
+		
+		File file = new File(url.getPath());
+		System.out.println(new File("DinoTable.txt").getAbsolutePath());
+
 		//Read file
 		try {
 			Scanner input = new Scanner(file);
@@ -49,16 +33,10 @@ public class ReadDino
 		} catch (FileNotFoundException e) {
 			System.out.println("\n\nFile not found");
 		}
-		
+
 		readDino.printArray(arrayOfDinos);
 	}
-=======
-		//Open csv file
->>>>>>> master
-		ReadDino readDino = new ReadDino();
-		URL url = readDino.getClass().getResource("DinoTable.txt");
-		//URL url = readDino.getClass().getResource("DinoTable.csv");
-		//URL url = readDino.getClass().getResource("DinoTable.xlsx");
+
 
 	private ArrayList<ArrayList<String>> processData(Scanner input,  ArrayList<ArrayList<String>> arrayOfDinos)
 	{
@@ -69,8 +47,8 @@ public class ReadDino
 			String[] lineOfStats = line.split(",");
 			//Creates a single ArrayList type string
 			ArrayList<String> singleDino = new ArrayList<String>();
-			
-			
+
+
 			//goes through a single line similar to column
 			//s is the individual stat and lineOfStat is the entire row
 			//TODO: how do the for loop work
@@ -87,7 +65,7 @@ public class ReadDino
 	//Print the dinosaur results
 	private void printArray(ArrayList<ArrayList<String>> arrayOfDinos)
 	{
-		
+
 		//print first line with Dinos and their stats
 		//how is the for loop working if Dino is blank
 		for (ArrayList<String> dino : arrayOfDinos  )
@@ -98,9 +76,7 @@ public class ReadDino
 			}
 			System.out.println();
 		}
-		File file = new File(url.getPath());
 
 		return;
 	}
 }
-		//Read file

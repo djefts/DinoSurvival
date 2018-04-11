@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Usersaurus {
 
-	//TODO: Put in for loop once excel file is read
-	//TODO: Figure out how to fix Scanner
 	public static void main(String[] args) {
 
 		// Create a scanner for command line input
