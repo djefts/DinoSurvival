@@ -1,4 +1,3 @@
-@@ -1,90 +1,34 @@
 package DataIO;
 
 import java.io.File;
@@ -12,32 +11,16 @@ import java.util.Scanner;
  */
 public class ReadDino
 {
-    public void method() {
-        
-    }
+
 		
 	public static void main (String []args) 
 	{
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-		HEAD:src/ReadDino.java
-		//		String fileName = "DinoTable.csv";
-		String fileName = "DinoTable.txt";
-	public void method() {
-		//public class ReadDino
-		//String fileName = "/resources/DinoTable.txt";
-		File file = new File(fileName);
-
-<<<<<<< HEAD
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
-		//String fileName = "DinoTable.csv";
-		//String fileName = "DinoTable.txt";
-		master:src/DataIO/ReadDino.java
 		
 		ReadDino readDino = new ReadDino();
-        URL url = readDino.getClass().getResource("DinoTable.txt");
+        URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
         File file = new File(url.getPath());
   
 		//Read file
@@ -52,13 +35,7 @@ public class ReadDino
 		
 		readDino.printArray(arrayOfDinos);
 	}
-=======
-		//Open csv file
->>>>>>> master
-		ReadDino readDino = new ReadDino();
-		URL url = readDino.getClass().getResource("DinoTable.txt");
-		//URL url = readDino.getClass().getResource("DinoTable.csv");
-		//URL url = readDino.getClass().getResource("DinoTable.xlsx");
+
 
 	private ArrayList<ArrayList<String>> processData(Scanner input,  ArrayList<ArrayList<String>> arrayOfDinos)
 	{
@@ -98,9 +75,7 @@ public class ReadDino
 			}
 			System.out.println();
 		}
-		File file = new File(url.getPath());
 
 		return;
 	}
 }
-		//Read file
