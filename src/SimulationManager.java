@@ -1,3 +1,5 @@
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 import java.util.ArrayList;
 
 public class SimulationManager {
@@ -22,6 +24,7 @@ public class SimulationManager {
     
     public SimulationManager(int maxSimLength) {
         this.maxSimLength = maxSimLength;
+        simulationLength = this.maxSimLength;
     }
     
     public static void main(String[] args) {
@@ -33,22 +36,42 @@ public class SimulationManager {
         setSimulationLength();
         System.out.println(getSimulationLength());
         setResources();
+    
+        Usersaurus usersaurus = new Usersaurus(0, 0);
+        String[] args = new String[]{""};
+        usersaurus.main(args);
+        dinosaurs.add(usersaurus);
+        
+        System.out.println("\n\n\n");
+        
+        for(Grass grass:grasses) {
+            System.out.println(grass);
+        }
         
         //simulation loop
         do {
             for (Grass grass : grasses) {
                 grass.timeToGrow();
-                System.out.println(grass);
             }
             for (Water water : waters) {
             
             }
-            for (Dinosaur dinosaur : dinosaurs) {
+            for (int i=0; i<dinosaurs.size(); i++) {
+                Dinosaur dinosaur = dinosaurs.get(i);
+                if(simulationLength%3==0) { //dinosaurs lose 1 health and food every 3 turns
+                    dinosaur.addFood(-1);
+                    dinosaur.addWater(-1);
+                }
+                dinosaur.loseHealth();
                 dinosaur.move(dinosaurs, grasses, waters);
             }
+            System.out.println("There are " + dinosaurs.size() + " dinosaurs left.");
             simulationLength -= 1;
             simulationTime += 1;
+            //update GUI
         } while (simulationLength > 0);
+        
+        System.out.println("¡THE SIMULATION IS DONE!");
     }
     
     public void setSimulationLength() {

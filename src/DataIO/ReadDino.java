@@ -18,16 +18,17 @@ public class ReadDino
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
 		
 		ReadDino readDino = new ReadDino();
-        URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
-        //URL url = readDino.getClass().getResource("DinoTable.csv");
+		String fileName = "DinoTable.txt";
+        URL url = readDino.getClass().getResource("/resources/"+fileName);
+        //URL url = readDino.getClass().getResource("/resources/DinoTable.csv");
         //URL url = readDino.getClass().getResource("DinoTable.xlsx");
         
-        System.out.println(new File("DinoTable.txt").getAbsolutePath());
-        
-        
-        System.out.println(readDino.getClass().getResource("DinoTable.txt"));
-        
         File file = new File(url.getPath());
+        
+        System.out.println(file.getAbsolutePath());
+        System.out.println(file.exists());
+        System.out.println(file.canRead());
+        System.out.println("\n\n");
   
 		//Read file
 		try {

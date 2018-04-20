@@ -50,7 +50,7 @@ public class Water implements Positioned{
     }
     
     public String toString() {
-        String output = "WATER\t";
+        String output = "WATER ";
         output += "(" + getxLoc() + ", " + getyLoc() + ")";
         return output;
     }
