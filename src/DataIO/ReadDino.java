@@ -1,3 +1,5 @@
+package DataIO;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -14,7 +16,7 @@ public class ReadDino
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
 		
 		ReadDino readDino = new ReadDino();
-        URL url = readDino.getClass().getResource("/resources/DinoTable.txt");
+        URL url = readDino.getClass().getResource("DinoTable.txt");
         //URL url = readDino.getClass().getResource("DinoTable.csv");
         //URL url = readDino.getClass().getResource("DinoTable.xlsx");
         
