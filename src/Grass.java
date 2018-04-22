@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 
 /**
  * Sources:
- *      https://stackoverflow.com/questions/18309868/imageio-iioexception-cant-read-input-file
+ * https://stackoverflow.com/questions/18309868/imageio-iioexception-cant-read-input-file
  */
 public class Grass implements Positioned {
     private final int growthRate = 4;           //turns before grass will increase in stage
@@ -24,6 +24,7 @@ public class Grass implements Positioned {
         this.xLoc = xLoc;
         this.yLoc = yLoc;
     }
+    
     public Grass(int xLoc, int yLoc, int growthStage) {
         this.growthStage = growthStage;
         setStagePic();
@@ -62,7 +63,7 @@ public class Grass implements Positioned {
     }
     
     private BufferedImage getImage() {
-    
+        
         switch (getGrowthStage()) {
             case 4:
                 return grassStage4;
@@ -98,9 +99,10 @@ public class Grass implements Positioned {
     }
     
     public String toString() {
-        String output = "GRASS\tGrowth stage: " + getGrowthStage();
-        output += "\t\tTurns till growth: " + grow;
-        output += "\t(" + getxLoc() + ", " + getyLoc() + ")";
+        String output = "GRASS "+growthStage;
+        output += "(" + getxLoc() + ", " + getyLoc() + ")";
+        /*output += "Growth stage: " + getGrowthStage();
+        output += "\t\tTurns till growth: " + grow;*/
         return output;
     }
 }

@@ -20,13 +20,15 @@ public class ReadDino
         //URL url = readDino.getClass().getResource("DinoTable.csv");
         //URL url = readDino.getClass().getResource("DinoTable.xlsx");
         
-        System.out.println(new File("DinoTable.txt").getAbsolutePath());
-        
-        
-        System.out.println(readDino.getClass().getResource("DinoTable.txt"));
-        
         File file = new File(url.getPath());
 
+        
+        System.out.println(file.getAbsolutePath());
+        System.out.println(file.exists());
+        System.out.println(file.canRead());
+        System.out.println("\n\n");
+  
+>>>>>>> master
 		//Read file
 		try {
 			Scanner input = new Scanner(file);
