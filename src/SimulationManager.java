@@ -126,4 +126,9 @@ public class SimulationManager {
         }
         return new Water(xLoc, yLoc);
     }
+    
+    public void testDinos() {
+        Tyrannosaurus mover1 = new Tyrannosaurus((int)(Math.random()*simulationSize), (int)(Math.random()*simulationSize));
+        dinosaurs.add(mover1);
+    }
 }

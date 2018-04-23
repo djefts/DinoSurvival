@@ -30,8 +30,6 @@ public class Dinosaur implements Positionable {
     public Dinosaur(){}
     
     public Dinosaur(int xLoc, int yLoc) {
-        addFood(getFoodStorage() / 2);
-        addWater(getWaterStorage() / 2);
         setxLoc(xLoc);
         setyLoc(yLoc);
     }
@@ -49,14 +47,19 @@ public class Dinosaur implements Positionable {
         setFoodToReproduce(5);
         setTurnsWithoutFood(10);
         setMaxAge(20);
-        setHerd(false);
-        setTerritorial(false);
+        setHerd(0);
+        setTerritorial(0);
         setHerbivore(0);
         setVisionLength(50);
         setRadius(5);
         setxLoc(0);
         setyLoc(0);
         badDinos = new ArrayList<>();
+    }
+    
+    public void setDinosaur(int xLoc, int yLoc) {
+        addFood(getFoodStorage() / 2);
+        addWater(getWaterStorage() / 2);
     }
     
     public int getHealth() {
@@ -70,7 +73,7 @@ public class Dinosaur implements Positionable {
         }
     }
     
-    private int getSpeed() {
+    public int getSpeed() {
         return speed;
     }
     
@@ -114,7 +117,7 @@ public class Dinosaur implements Positionable {
         return kids;
     }
     
-    private void setKids(int kids) {
+    public void setKids(int kids) {
         this.kids = kids;
     }
     
@@ -122,7 +125,7 @@ public class Dinosaur implements Positionable {
         return foodToReproduce;
     }
     
-    private void setFoodToReproduce(int foodToReproduce) {
+    public void setFoodToReproduce(int foodToReproduce) {
         this.foodToReproduce = foodToReproduce;
     }
     
@@ -130,7 +133,7 @@ public class Dinosaur implements Positionable {
         return turnsWithoutFood;
     }
     
-    private void setTurnsWithoutFood(int turnsWithoutFood) {
+    public void setTurnsWithoutFood(int turnsWithoutFood) {
         this.turnsWithoutFood = turnsWithoutFood;
     }
     
@@ -138,7 +141,7 @@ public class Dinosaur implements Positionable {
         return maxAge;
     }
     
-    private void setMaxAge(int maxAge) {
+    public void setMaxAge(int maxAge) {
         this.maxAge = maxAge;
     }
     
@@ -146,16 +149,24 @@ public class Dinosaur implements Positionable {
         return herd;
     }
     
-    private void setHerd(boolean herd) {
-        this.herd = herd;
+    public void setHerd(int herd) {
+        if(herd==0) {
+            this.herd=false;
+        } else {
+            this.herd=true;
+        }
     }
     
     public boolean isTerritorial() {
         return territorial;
     }
     
-    public void setTerritorial(boolean territorial) {
-        this.territorial = territorial;
+    public void setTerritorial(int territorial) {
+        if(territorial==0) {
+            this.territorial=false;
+        } else {
+            this.territorial=true;
+        }
     }
     
     public boolean isHerbivore() {
@@ -197,7 +208,7 @@ public class Dinosaur implements Positionable {
         return visionLength;
     }
     
-    private void setVisionLength(double visionLength) {
+    public void setVisionLength(double visionLength) {
         this.visionLength = visionLength;
     }
     
@@ -205,7 +216,7 @@ public class Dinosaur implements Positionable {
         return radius;
     }
     
-    private void setRadius(int radius) {
+    public void setRadius(int radius) {
         this.radius = radius;
     }
     
@@ -337,7 +348,7 @@ public class Dinosaur implements Positionable {
         }
     }
     
-    private void moveInRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
+    public void moveInRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
         Positioned food = wut2Eat(dinosaurs, grasses, waters);      //searching out target...
         
         int xLocFood = food.getxLoc();
@@ -369,7 +380,7 @@ public class Dinosaur implements Positionable {
         }
     }
     
-    private void moveOutRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
+    public void moveOutRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
         Positioned food = wut2Eat(dinosaurs, grasses, waters);      //searching out target...
         
         //if there is not a valid food source found then the next 2 lines will throw a NullPointerException
@@ -390,7 +401,7 @@ public class Dinosaur implements Positionable {
         setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
     }
     
-    private void battle(Dinosaur dino) {
+    public void battle(Dinosaur dino) {
         //attack vs defense
         int dH = this.getAttack() - dino.getDefense();
         if(dH > 0) {        //dinosaur's attack is greater than the other guy's defense
@@ -404,7 +415,9 @@ public class Dinosaur implements Positionable {
     }
     
     public void timeToReproduce() {
-    
+        if(foodStorage-foodToReproduce>3) {
+        
+        }
     }
     
     public String getName() {
