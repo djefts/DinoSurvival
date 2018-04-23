@@ -1,3 +1,5 @@
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 import javax.jws.soap.SOAPBinding;
 import java.util.Scanner;
 
@@ -10,11 +12,13 @@ public class Usersaurus extends Dinosaur{
     
     public Usersaurus() {}
     
-
+	//TODO: Put in for loop once excel file is read
+	//TODO: Figure out how to fix Scanner
 	public static void main(String[] args) {
 
 		// Create a scanner for command line input
 		Scanner in = new Scanner(System.in);
+		Usersaurus usersaurus = new Usersaurus();
 		int statArray[] = new int[12];
 		do
 		{
@@ -219,4 +223,3 @@ public class Usersaurus extends Dinosaur{
 		return test;
 	}
 }
-

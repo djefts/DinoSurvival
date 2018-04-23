@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 public class Tyrannosaurus extends Dinosaur {
     
     public Tyrannosaurus(int xLoc, int yLoc) {
         ReadDino readDino = new ReadDino();
-        String[] data = readDino.getDinoData("Tyrannosaurus");
+        ArrayList<String> data = readDino.individualDino("Tyrannosaurus");
         addHealth(4);
         setSpeed(3);
         setAttack(7);

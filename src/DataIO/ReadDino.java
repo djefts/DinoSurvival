@@ -6,64 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-<<<<<<< HEAD
-public class ReadDino
-{
 
-	public static void main (String []args) 
-	{
-		//Create array of array of strings
-		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
-		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-
-		ReadDino readDino = new ReadDino();
-		URL url = readDino.getClass().getResource("DinoTable.txt");
-		//URL url = readDino.getClass().getResource("DinoTable.csv");
-		File file = new File(url.getPath());
-
-		//Read file
-		try {
-			Scanner input = new Scanner(file);
-			arrayOfDinos = readDino.processData(input, arrayOfDinos);
-			input.close();
-
-		} catch (FileNotFoundException e) {
-			System.out.println("\n\nFile not found");
-		}
-
-		readDino.printArray(arrayOfDinos);
-	}
-
-	private ArrayList<ArrayList<String>> processData(Scanner input,  ArrayList<ArrayList<String>> arrayOfDinos)
-	{
-		//boolean .hasNextLine() returns true if there is another line
-		while(input.hasNextLine())
-		{
-			String line = input.nextLine();
-			String[] lineOfStats = line.split(",");
-			//Creates a single ArrayList type string
-			ArrayList<String> singleDino = new ArrayList<String>();
-
-
-			//goes through a single line similar to column
-			//s is the individual stat and lineOfStat is the entire row
-			for(String s : lineOfStats)
-			{
-				//Adds individual stats to a ArrayList of Strings
-				singleDino.add(s); 			
-			}
-			//Adds an entire row to the ArrayList
-			arrayOfDinos.add(singleDino);
-		}
-		return arrayOfDinos;
-	}
-	//Print the dinosaur results
-	private void printArray(ArrayList<ArrayList<String>> arrayOfDinos)
-	{
-
-		//print first line with Dinos and their stats
-		//how is the for loop working if Dino is blank
-=======
 /**
  * https://stackoverflow.com/questions/28563684/filenotfoundexception-and-file-exists
  * https://stackoverflow.com/questions/10657315/git-merge-left-head-marks-in-my-files
@@ -81,7 +24,6 @@ public class ReadDino {
         //Create array of array of strings
         //{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
         ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-        ArrayList<String> pickedDino = new ArrayList<>();
         
         String fileName = "DinoTable.txt";
         URL url = getClass().getResource("/resources/" + fileName);
@@ -89,7 +31,6 @@ public class ReadDino {
         //URL url = readDino.getClass().getResource("DinoTable.xlsx");
         
         file = new File(url.getPath());
-        String dinosaurName = "Pterodactyl";
         
         System.out.println(file.getAbsolutePath());
         System.out.println(file.exists());
@@ -100,8 +41,6 @@ public class ReadDino {
         arrayOfDinos = processData(arrayOfDinos);
         //print file
         printArray(arrayOfDinos);
-        pickedDino = individualDinoArray(dinosaurName,arrayOfDinos);
-        printOneDino(pickedDino);
     }
     
     private ArrayList<ArrayList<String>> processData(ArrayList<ArrayList<String>> arrayOfDinos) {
@@ -150,8 +89,6 @@ public class ReadDino {
 	{
 		ArrayList<String> pickedDinoStats = new ArrayList<String>();
 
-		//s is the individual stat and lineOfStat is the entire row
->>>>>>> master
 		for (ArrayList<String> dino : arrayOfDinos  )
 		{	
 			if(dino.get(0).equals(dinosaurName))
@@ -161,20 +98,8 @@ public class ReadDino {
 					pickedDinoStats.add(s);
 				}
 			}
-<<<<<<< HEAD
-			System.out.println();
-		}	
-	}
-	private ArrayList<ArrayList<String>> individualDinoArray(ArrayList<ArrayList<String>> arrayOfDinos, dinosaurName)
-	{
-		ArrayList<String> pickedDinoStats = new ArrayList<String>();
 
-		//s is the individual stat and lineOfStat is the entire row
-		for(String s : lineOfStats)
-		{
-			if(s == dinosaurName)
-				pickedDinoStats.add(s);
-=======
+			System.out.println();
 		}	
 		return pickedDinoStats;
 	}
@@ -185,14 +110,9 @@ public class ReadDino {
 		for (String s : pickedDinoStats)
 		{
 			System.out.print(s + "\t");
->>>>>>> master
-		}
-		return pickedDinoStats;
-	}
-<<<<<<< HEAD
-}
 
-=======
-    
+		}
+		return; 
+	}
+
 }
->>>>>>> master
