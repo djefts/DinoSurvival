@@ -11,15 +11,14 @@ import java.util.Scanner;
 public class ReadDino
 {
 		
-	public static void main (String []args) 
+	public ReadDino()
 	{
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
 		
-		ReadDino readDino = new ReadDino();
 		String fileName = "DinoTable.txt";
-        URL url = readDino.getClass().getResource("/resources/"+fileName);
+        URL url = getClass().getResource("/resources/"+fileName);
         //URL url = readDino.getClass().getResource("/resources/DinoTable.csv");
         //URL url = readDino.getClass().getResource("DinoTable.xlsx");
         
@@ -33,15 +32,19 @@ public class ReadDino
 		//Read file
 		try {
 			Scanner input = new Scanner(file);
-			arrayOfDinos = readDino.processData(input, arrayOfDinos);
+			arrayOfDinos = processData(input, arrayOfDinos);
 			input.close();
 
 		} catch (FileNotFoundException e) {
 			System.out.println("\n\nFile not found");
 		}
 		
-		readDino.printArray(arrayOfDinos);
+		printArray(arrayOfDinos);
 	}
+	
+	public static void main(String[] args) {
+	    ReadDino readDino = new ReadDino();
+    }
 
 	private ArrayList<ArrayList<String>> processData(Scanner input,  ArrayList<ArrayList<String>> arrayOfDinos)
 	{
