@@ -14,21 +14,12 @@ public class ReadDino
 		//Create array of array of strings
 		//{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
 		ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
-		
-		ReadDino readDino = new ReadDino();
-        URL url = readDino.getClass().getResource("DinoTable.txt");
-        //URL url = readDino.getClass().getResource("DinoTable.csv");
-        //URL url = readDino.getClass().getResource("DinoTable.xlsx");
-        
-        File file = new File(url.getPath());
 
-        
-        System.out.println(file.getAbsolutePath());
-        System.out.println(file.exists());
-        System.out.println(file.canRead());
-        System.out.println("\n\n");
-  
->>>>>>> master
+		ReadDino readDino = new ReadDino();
+		URL url = readDino.getClass().getResource("DinoTable.txt");
+		//URL url = readDino.getClass().getResource("DinoTable.csv");
+		File file = new File(url.getPath());
+
 		//Read file
 		try {
 			Scanner input = new Scanner(file);
@@ -55,7 +46,6 @@ public class ReadDino
 
 			//goes through a single line similar to column
 			//s is the individual stat and lineOfStat is the entire row
-			//TODO: how do the for loop work
 			for(String s : lineOfStats)
 			{
 				//Adds individual stats to a ArrayList of Strings
@@ -79,6 +69,19 @@ public class ReadDino
 				System.out.print(s + "\t");
 			}
 			System.out.println();
+		}	
+	}
+	private ArrayList<ArrayList<String>> individualDinoArray(ArrayList<ArrayList<String>> arrayOfDinos, dinosaurName)
+	{
+		ArrayList<String> pickedDinoStats = new ArrayList<String>();
+
+		//s is the individual stat and lineOfStat is the entire row
+		for(String s : lineOfStats)
+		{
+			if(s == dinosaurName)
+				pickedDinoStats.add(s);
 		}
+		return pickedDinoStats;
 	}
 }
+

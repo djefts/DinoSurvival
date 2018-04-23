@@ -1,5 +1,3 @@
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-
 import javax.jws.soap.SOAPBinding;
 import java.util.Scanner;
 
@@ -12,13 +10,11 @@ public class Usersaurus extends Dinosaur{
     
     public Usersaurus() {}
     
-	//TODO: Put in for loop once excel file is read
-	//TODO: Figure out how to fix Scanner
+
 	public static void main(String[] args) {
 
 		// Create a scanner for command line input
 		Scanner in = new Scanner(System.in);
-		Usersaurus usersaurus = new Usersaurus();
 		int statArray[] = new int[12];
 		do
 		{
@@ -224,35 +220,3 @@ public class Usersaurus extends Dinosaur{
 	}
 }
 
-	/**
-	 * Alternative method to checkInt, betweenValueCheck and betweenValueCheck2
-	 * Combines the 3 methods into 1
-	 * Slightly more efficient, a little easier to read, and keeps Scanner local to method
-	 *      while making sure it is only open when necessary
-	 */
-	/*public int checkInput(int minValue, int maxValue) {
-        int varOut;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter a number between " + minValue + " and " + maxValue);
-
-        //make sure input value is an integer
-        try {
-            varOut = in.nextInt();
-        } catch (InputMismatchException e) {
-            //value is not an integer
-            System.out.println("Whole Numbers Only!");
-            String userSucks = in.next();
-            in.close();
-            varOut = checkInput(minValue, maxValue);
-        }
-
-        //make sure input is within bounds
-        if(varOut < minValue || varOut > maxValue) {
-            //input OutOfBoundsException
-            in.close();
-            varOut = checkInput(minValue, maxValue);
-        }
-
-        in.close();
-        return varOut;
-    }*/
