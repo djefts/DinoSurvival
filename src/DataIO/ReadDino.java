@@ -1,3 +1,5 @@
+package DataIO;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -21,6 +23,7 @@ public class ReadDino {
         //Create array of array of strings
         //{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
         ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
+        ArrayList<String> pickedDino = new ArrayList<>();
         
         String fileName = "DinoTable.txt";
         URL url = getClass().getResource("/resources/" + fileName);
@@ -28,6 +31,7 @@ public class ReadDino {
         //URL url = readDino.getClass().getResource("DinoTable.xlsx");
         
         file = new File(url.getPath());
+        String dinosaurName = "Pterodactyl";
         
         System.out.println(file.getAbsolutePath());
         System.out.println(file.exists());
@@ -38,6 +42,8 @@ public class ReadDino {
         arrayOfDinos = processData(arrayOfDinos);
         //print file
         printArray(arrayOfDinos);
+        pickedDino = individualDinoArray(dinosaurName,arrayOfDinos);
+        printOneDino(pickedDino);
     }
     
     private ArrayList<ArrayList<String>> processData(ArrayList<ArrayList<String>> arrayOfDinos) {
@@ -82,8 +88,31 @@ public class ReadDino {
         }
     }
     
-    public String[] getDinoData(String name) {
-        String[] dinoData = new String[]{};
-        return dinoData;
-    }
+    private ArrayList<String> individualDinoArray(String dinosaurName,ArrayList<ArrayList<String>> arrayOfDinos)
+	{
+		ArrayList<String> pickedDinoStats = new ArrayList<String>();
+
+		//s is the individual stat and lineOfStat is the entire row
+		for (ArrayList<String> dino : arrayOfDinos  )
+		{	
+			if(dino.get(0).equals(dinosaurName))
+			{
+				for (String s : dino)
+				{
+					pickedDinoStats.add(s);
+				}
+			}
+		}	
+		return pickedDinoStats;
+	}
+
+	private void printOneDino(ArrayList<String> pickedDinoStats)
+	{
+		System.out.println();
+		for (String s : pickedDinoStats)
+		{
+			System.out.print(s + "\t");
+		}
+	}
+    
 }
