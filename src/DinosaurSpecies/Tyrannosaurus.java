@@ -1,21 +1,14 @@
 public class Tyrannosaurus extends Dinosaur {
     
     public Tyrannosaurus(int xLoc, int yLoc) {
-        ReadDino readDino = new ReadDino();
-        String[] data = readDino.getDinoData("Tyrannosaurus");
-        addHealth(4);
-        setSpeed(3);
-        setAttack(7);
-        setDefense(2);
-        setFoodStorage(8);
-        setWaterStorage(4);
-        setKids(1);
-        setFoodToReproduce(6);
-        setTurnsWithoutFood(4);
-        setMaxAge(4);
-        setHerbivore(0);
-        setHerd(0);
-        setTerritorial(1);
-        setDinosaur(xLoc, yLoc);
+        setDinosaur(xLoc, yLoc, "Tyrannosaurus");
+    }
+    
+    @Override
+    public Dinosaur timeToReproduce() {
+        if(this.getCurFood() - this.getFoodToReproduce() > 0) {
+            return new Triceratops(getxLoc(),getyLoc());
+        }
+        return null;
     }
 }

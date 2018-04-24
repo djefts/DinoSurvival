@@ -11,16 +11,15 @@ import java.util.Scanner;
 public class ReadDino {
     
     File file;
+    ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
     
     public static void main(String[] args) {
         ReadDino readDino = new ReadDino();
         readDino.setUp();
     }
     
+    
     public void setUp() {
-        //Create array of array of strings
-        //{{stat,stat,stat},{stat,stat,stat},{stat,stat,stat}}
-        ArrayList<ArrayList<String>> arrayOfDinos = new ArrayList<>();
         
         String fileName = "DinoTable.txt";
         URL url = getClass().getResource("/resources/" + fileName);
@@ -29,61 +28,74 @@ public class ReadDino {
         
         file = new File(url.getPath());
         
-        System.out.println(file.getAbsolutePath());
+        //testing to make sure the file is where it should be and is found
+        /*System.out.println(file.getAbsolutePath());
         System.out.println(file.exists());
         System.out.println(file.canRead());
-        System.out.println("\n");
+        System.out.println("\n");*/
         
-        //Read file
-        arrayOfDinos = processData(arrayOfDinos);
-        //print file
-        printArray(arrayOfDinos);
+        //Read file and add it to arrayOfDinos
+        processData(arrayOfDinos);
+        //print file (testing purposes)
+        //printArray(arrayOfDinos);
     }
     
-    private ArrayList<ArrayList<String>> processData(ArrayList<ArrayList<String>> arrayOfDinos) {
+    private void processData(ArrayList<ArrayList<String>> arrayOfDinos) {
         try {
+            //Open up the scanner to read the raw data file
             Scanner input = new Scanner(file);
             
             //boolean .hasNextLine() returns true if there is another line
             while (input.hasNextLine()) {
-                String line = input.nextLine();
-                String[] lineOfStats = line.split(",");
+                String line = input.nextLine();             //the current line
+                String[] lineOfStats = line.split(",");     //separate the line by commas
+                
                 //Creates a single ArrayList type string
-                ArrayList<String> singleDino = new ArrayList<String>();
+                ArrayList<String> singleDino = new ArrayList<>();
                 
                 //goes through a single line similar to column
                 //s is the individual stat and lineOfStat is the entire row
-                //TODO: how do the for loop work
                 for (String s : lineOfStats) {
-                    //Adds individual stats to a ArrayList of Strings
+                    //Adds individual stats to each spot of singleDino
                     singleDino.add(s);
                 }
-                //Adds an entire row to the ArrayList
+                //Add singleDino to the full array list
                 arrayOfDinos.add(singleDino);
             }
             
+            //close the scanner when done :)
             input.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-        return arrayOfDinos;
     }
     
     //Print the dinosaur results
     private void printArray(ArrayList<ArrayList<String>> arrayOfDinos) {
         
         //print first line with Dinos and their stats
-        //how is the for loop working if Dino is blank
         for (ArrayList<String> dino : arrayOfDinos) {
             for (String s : dino) {
                 System.out.print(s + "\t");
             }
             System.out.println();
         }
+        System.out.println();
     }
     
-    public String[] getDinoData(String name) {
-        String[] dinoData = new String[]{};
-        return dinoData;
+    /**
+     *
+     * @param name name of the dinosaur asked for
+     * @return ArrayList<String> for name dinosaur
+     */
+    public ArrayList<String> getDinoData(String name) {
+        setUp();
+        for (int i = 1; i<arrayOfDinos.size(); i++) {
+            if(arrayOfDinos.get(i).get(0).equals(name)) {
+                return arrayOfDinos.get(i);
+            }
+        }
+        System.out.println("Did you spell the name right?");
+        return null;
     }
 }

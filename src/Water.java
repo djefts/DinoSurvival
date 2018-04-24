@@ -3,9 +3,9 @@ import java.awt.image.BufferedImage;
 
 /**
  * Sources:
- *      https://stackoverflow.com/questions/18309868/imageio-iioexception-cant-read-input-file
+ * https://stackoverflow.com/questions/18309868/imageio-iioexception-cant-read-input-file
  */
-public class Water implements Positioned{
+public class Water implements Positioned {
     private BufferedImage waterImage = null;
     private int xLoc;
     private int yLoc;

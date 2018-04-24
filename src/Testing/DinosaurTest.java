@@ -15,23 +15,22 @@ class DinosaurTest {
     
     private final Dinosaur dinosaur = new Dinosaur(0, 0);               //dinosaur that is used as the "current" dinosaur deciding stuff
     
-    private final Dinosaur dinoTest1 = new Dinosaur(25, 0);               //closest test dinosaur
-    private final Dinosaur dinoTest2 = new Dinosaur(15, 20);              //second closest dino
-    private final Dinosaur dinoTest3 = new Dinosaur(40, 20);
+    private final int delta = -3;
+    private Dinosaur dinoTest1 = new Dinosaur(25, 0);               //closest test dinosaur
+    private Dinosaur dinoTest2 = new Dinosaur(15, 20);              //second closest dino
+    private Dinosaur dinoTest3 = new Dinosaur(40, 20);
     
-    private final Grass grassTest1 = new Grass(0, 25);                    //closest test grass
-    private final Grass grassTest2 = new Grass(30, 30);
-    private final Grass grassTest3 = new Grass(-25, 25);
+    private Grass grassTest1 = new Grass(0, 25);                    //closest test grass
+    private Grass grassTest2 = new Grass(30, 30);
+    private Grass grassTest3 = new Grass(-25, 25);
     
-    private final Water waterTest1 = new Water(0, -25);                   //closet test water
-    private final Water waterTest2 = new Water(-30, -5);
-    private final Water waterTest3 = new Water(5, -25);
+    private Water waterTest1 = new Water(0, -25);                   //closet test water
+    private Water waterTest2 = new Water(-30, -5);
+    private Water waterTest3 = new Water(5, -25);
     
     private ArrayList<Dinosaur> dinosaurs = new ArrayList<>();
     private ArrayList<Grass> grasses = new ArrayList<>();
     private ArrayList<Water> waters = new ArrayList<>();
-    
-    private final int delta = -3;
     
     @Test
     void closestDinosaur() {
@@ -83,7 +82,6 @@ class DinosaurTest {
     }
     
     
-    
     @Test
     void move() {
         instantiation();
@@ -98,8 +96,8 @@ class DinosaurTest {
         dinosaur.addFood(delta);
         assertEquals(true, dinosaur.isHerbivore());
         dinosaur.move(dinosaurs, grasses1, waters);             //move where?
-        assertEquals(0,dinosaur.getxLoc());                         //nowhere
-        assertEquals(0,dinosaur.getyLoc());
+        assertEquals(0, dinosaur.getxLoc());                         //nowhere
+        assertEquals(0, dinosaur.getyLoc());
         instantiation();                                //reset testing defaults
         
         //dino is a hungry herbivore
@@ -161,7 +159,7 @@ class DinosaurTest {
         assertEquals(testy.getyLoc(), dinosaur.getyLoc());
         assertEquals(1, testy.getGrowthStage());                //grass growth stage is now 1
         instantiation();                                //reset testing defaults
-    
+        
         //dino is going to drink a water
         Water testyW = new Water(5, 0);                          //add a water within reach of dinosaur @ (5, 0)
         waters.add(testyW);
@@ -174,6 +172,8 @@ class DinosaurTest {
         
         //dino is going to eat a dino
         Dinosaur testyDino = new Dinosaur(0, 5);                //add a dino within reach of dinosaur @ (0, 5)
+        testyDino.addHealth(5);
+        testyDino.setSpecies("test dino");
         dinosaurs.add(testyDino);
         dinosaur.setHerbivore(1);
         dinosaur.addFood(delta);
@@ -186,15 +186,19 @@ class DinosaurTest {
     
     private void instantiation() {
         dinosaur.defaultStats();
-    
+        dinosaur.setxLoc(0);
+        dinosaur.setyLoc(0);
     
         dinosaurs.clear();
-        dinosaurs.add(dinoTest1);
-        dinosaurs.add(dinoTest2);
-        dinosaurs.add(dinoTest3);
         dinoTest1.addHealth(5);
         dinoTest2.addHealth(5);
         dinoTest3.addHealth(5);
+        dinoTest1.setSpecies("test 1");
+        dinoTest2.setSpecies("test 2");
+        dinoTest3.setSpecies("test 3");
+        dinosaurs.add(dinoTest1);
+        dinosaurs.add(dinoTest2);
+        dinosaurs.add(dinoTest3);
         
         grasses.clear();
         grasses.add(grassTest1);

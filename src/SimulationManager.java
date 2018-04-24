@@ -1,19 +1,15 @@
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SimulationManager {
     
     private final int minSimLength = 250;
-    private int maxSimLength = 5000;
-    private int simulationLength;
-    int simulationTime = 0;
-    
     private final int simulationSize = 50;        //length of each side of the simulation screen
-    
     private final int numGrasses = 4;
     private final int numWaters = 4;
-    
+    int simulationTime = 0;
+    private int maxSimLength = 5000;
+    private int simulationLength;
     private ArrayList<Dinosaur> dinosaurs = new ArrayList<>();
     private ArrayList<Grass> grasses = new ArrayList<>();
     private ArrayList<Water> waters = new ArrayList<>();
@@ -36,15 +32,16 @@ public class SimulationManager {
         setSimulationLength();
         System.out.println(getSimulationLength());
         setResources();
-    
-        Usersaurus usersaurus = new Usersaurus(0, 0);
+        
+        /***********TESTING**********/
+        /*Usersaurus usersaurus = new Usersaurus(0, 0);
         String[] args = new String[]{""};
         usersaurus.main(args);
-        dinosaurs.add(usersaurus);
+        dinosaurs.add(usersaurus);*/
+        testDinos();
+        /****************************/
         
-        System.out.println("\n\n\n");
-        
-        for(Grass grass:grasses) {
+        for (Grass grass : grasses) {
             System.out.println(grass);
         }
         
@@ -56,14 +53,14 @@ public class SimulationManager {
             for (Water water : waters) {
             
             }
-            for (int i=0; i<dinosaurs.size(); i++) {
-                Dinosaur dinosaur = dinosaurs.get(i);
-                if(simulationLength%3==0) { //dinosaurs lose 1 health and food every 3 turns
+            for (Dinosaur dinosaur : dinosaurs) {
+                if(simulationLength % 3 == 0) { //dinosaurs lose 1 health and food every 3 turns
                     dinosaur.addFood(-1);
                     dinosaur.addWater(-1);
                 }
                 dinosaur.loseHealth();
                 dinosaur.move(dinosaurs, grasses, waters);
+                dinosaurs.add(dinosaur.timeToReproduce());
             }
             System.out.println("There are " + dinosaurs.size() + " dinosaurs left.");
             simulationLength -= 1;
@@ -92,13 +89,14 @@ public class SimulationManager {
             grasses.add(createAGrass());
         }
     }
+    
     public Grass createAGrass() {
         //grass position: (int)(Math.random()*simulationSize)
         
-        int xLoc = (int)(Math.random()*simulationSize);
-        int yLoc = (int)(Math.random()*simulationSize);
+        int xLoc = (int) (Math.random() * simulationSize);
+        int yLoc = (int) (Math.random() * simulationSize);
         for (Grass grass : grasses) {
-            if(grass.getxLoc()==xLoc && grass.getyLoc()==yLoc) {
+            if(grass.getxLoc() == xLoc && grass.getyLoc() == yLoc) {
                 return createAGrass();
             }
         }
@@ -110,17 +108,18 @@ public class SimulationManager {
             waters.add(createAWater());
         }
     }
+    
     public Water createAWater() {
         //water position: (int)(Math.random()*simulationSize)
-        int xLoc = (int)(Math.random()*simulationSize);
-        int yLoc = (int)(Math.random()*simulationSize);
+        int xLoc = (int) (Math.random() * simulationSize);
+        int yLoc = (int) (Math.random() * simulationSize);
         for (Water water : waters) {
-            if(water.getxLoc()==xLoc && water.getyLoc()==yLoc) {
+            if(water.getxLoc() == xLoc && water.getyLoc() == yLoc) {
                 return createAWater();
             }
         }
         for (Grass grass : grasses) {
-            if(grass.getxLoc()==xLoc && grass.getyLoc()==yLoc) {
+            if(grass.getxLoc() == xLoc && grass.getyLoc() == yLoc) {
                 return createAWater();
             }
         }
@@ -128,7 +127,7 @@ public class SimulationManager {
     }
     
     public void testDinos() {
-        Tyrannosaurus mover1 = new Tyrannosaurus((int)(Math.random()*simulationSize), (int)(Math.random()*simulationSize));
+        Tyrannosaurus mover1 = new Tyrannosaurus((int) (Math.random() * simulationSize), (int) (Math.random() * simulationSize));
         dinosaurs.add(mover1);
     }
 }

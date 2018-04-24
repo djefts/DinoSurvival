@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import static java.lang.Double.MAX_VALUE;
 
 public class Dinosaur implements Positionable {
+    private String species;            //dinosaur's name (species)
     private int health;             //current health of the dinosaur
     private int maxHealth = 10;     //max health of the dinosaur
     private int speed;              //how far a dino can move in one "turn"
@@ -27,7 +28,8 @@ public class Dinosaur implements Positionable {
     
     private ArrayList<Dinosaur> badDinos = new ArrayList<>();
     
-    public Dinosaur(){}
+    public Dinosaur() {
+    }
     
     public Dinosaur(int xLoc, int yLoc) {
         setxLoc(xLoc);
@@ -35,6 +37,7 @@ public class Dinosaur implements Positionable {
     }
     
     public void defaultStats() {
+        setSpecies("default");
         addHealth(10);
         setSpeed(10);
         setAttack(5);
@@ -52,14 +55,42 @@ public class Dinosaur implements Positionable {
         setHerbivore(0);
         setVisionLength(50);
         setRadius(5);
-        setxLoc(0);
-        setyLoc(0);
-        badDinos = new ArrayList<>();
+        badDinos.clear();
     }
     
-    public void setDinosaur(int xLoc, int yLoc) {
+    public void setDinosaur(int xLoc, int yLoc, String name) {
+        ReadDino readDino = new ReadDino();
+        ArrayList<String> information = readDino.getDinoData(name);
+        
+        //SET THOSE STATS YOOOO
+        setSpecies(information.get(0));
+        addHealth(Integer.parseInt(information.get(1)));
+        setSpeed(Integer.parseInt(information.get(2)));
+        setAttack(Integer.parseInt(information.get(3)));
+        setDefense(Integer.parseInt(information.get(4)));
+        setFoodStorage(Integer.parseInt(information.get(5)));
+        setWaterStorage(Integer.parseInt(information.get(6)));
+        setKids(Integer.parseInt(information.get(7)));
+        setFoodToReproduce(Integer.parseInt(information.get(8)));
+        setTurnsWithoutFood(Integer.parseInt(information.get(9)));
+        setMaxAge(Integer.parseInt(information.get(10)));
+        setHerbivore(Integer.parseInt(information.get(11)));
+        setHerd(Integer.parseInt(information.get(12)));
+        setTerritorial(Integer.parseInt(information.get(13)));
         addFood(getFoodStorage() / 2);
         addWater(getWaterStorage() / 2);
+    }
+    
+    public String getName() {
+        return "dinosaur";
+    }
+    
+    public String getSpecies() {
+        return species;
+    }
+    
+    public void setSpecies(String species) {
+        this.species = species;
     }
     
     public int getHealth() {
@@ -150,10 +181,10 @@ public class Dinosaur implements Positionable {
     }
     
     public void setHerd(int herd) {
-        if(herd==0) {
-            this.herd=false;
+        if(herd == 0) {
+            this.herd = false;
         } else {
-            this.herd=true;
+            this.herd = true;
         }
     }
     
@@ -162,10 +193,10 @@ public class Dinosaur implements Positionable {
     }
     
     public void setTerritorial(int territorial) {
-        if(territorial==0) {
-            this.territorial=false;
+        if(territorial == 0) {
+            this.territorial = false;
         } else {
-            this.territorial=true;
+            this.territorial = true;
         }
     }
     
@@ -336,7 +367,7 @@ public class Dinosaur implements Positionable {
         try { //to find food
             if(distanceTo(food) <= getSpeed()) {    //can move to food in one turn
                 moveInRange(dinosaurs, grasses, waters);
-            } else {
+            } else {                                //food is out of reach
                 moveOutRange(dinosaurs, grasses, waters);
             }
         } catch (NullPointerException e) { //didn't find any food :(
@@ -374,8 +405,7 @@ public class Dinosaur implements Positionable {
             case "dinosaur":
                 //remove the dinosaur you just ate
                 System.out.println(this + " just tried to eat " + food + "!");
-                battle(dinosaurs.get(dinosaurs.indexOf(food)));
-                dinosaurs.remove(food);
+                battle(dinosaurs.get(dinosaurs.indexOf(food)), dinosaurs);
                 break;
         }
     }
@@ -401,12 +431,21 @@ public class Dinosaur implements Positionable {
         setyLoc(getyLoc() + newYLoc);                           //newY = y+moveY
     }
     
-    public void battle(Dinosaur dino) {
+    public void battle(Dinosaur dino, ArrayList<Dinosaur> dinosaurs) {
         //attack vs defense
         int dH = this.getAttack() - dino.getDefense();
         if(dH > 0) {        //dinosaur's attack is greater than the other guy's defense
             System.out.println("\t" + dino + " just lost " + dH + " health!");
-            dino.addHealth(dH);
+            dino.addHealth(-dH);
+            this.addFood(dino.curFood / 2);
+            if(dino.getHealth() <= 0) {
+                System.out.println("\t" + dino + " was just eaten!");
+                for (int i = 0; i < dinosaurs.size(); i++) {
+                    if(dinosaurs.get(i).equals(dino)) {
+                        dinosaurs.remove(i);
+                    }
+                }
+            }
         } else if(dH < 0) {   //defender has the big defense
             System.out.println("\t" + this + " just lost " + dH + " health!");
             this.addHealth(dH);
@@ -414,18 +453,12 @@ public class Dinosaur implements Positionable {
         }
     }
     
-    public void timeToReproduce() {
-        if(foodStorage-foodToReproduce>3) {
-        
-        }
-    }
-    
-    public String getName() {
-        return "dinosaur";
+    public Dinosaur timeToReproduce() {
+        return null;
     }
     
     public String toString() {
-        String output = "DINOSAUR "+health;
+        String output = getSpecies() + " " + health;
         /*if(herbivore) {
             output += "Herbivore\t";
         } else {
