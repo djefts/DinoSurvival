@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Triceratops extends Dinosaur {
     
     public Triceratops(int xLoc, int yLoc) {

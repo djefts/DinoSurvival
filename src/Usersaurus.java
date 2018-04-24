@@ -223,36 +223,3 @@ public class Usersaurus extends Dinosaur{
 		return test;
 	}
 }
-
-	/**
-	 * Alternative method to checkInt, betweenValueCheck and betweenValueCheck2
-	 * Combines the 3 methods into 1
-	 * Slightly more efficient, a little easier to read, and keeps Scanner local to method
-	 *      while making sure it is only open when necessary
-	 */
-	/*public int checkInput(int minValue, int maxValue) {
-        int varOut;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter a number between " + minValue + " and " + maxValue);
-
-        //make sure input value is an integer
-        try {
-            varOut = in.nextInt();
-        } catch (InputMismatchException e) {
-            //value is not an integer
-            System.out.println("Whole Numbers Only!");
-            String userSucks = in.next();
-            in.close();
-            varOut = checkInput(minValue, maxValue);
-        }
-
-        //make sure input is within bounds
-        if(varOut < minValue || varOut > maxValue) {
-            //input OutOfBoundsException
-            in.close();
-            varOut = checkInput(minValue, maxValue);
-        }
-
-        in.close();
-        return varOut;
-    }*/
