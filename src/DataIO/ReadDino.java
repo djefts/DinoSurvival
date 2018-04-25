@@ -87,13 +87,12 @@ public class ReadDino {
     }
     
     /**
-     *
      * @param name name of the dinosaur asked for
      * @return ArrayList<String> for name dinosaur
      */
     public ArrayList<String> getDinoData(String name) {
         setUp();
-        for (int i = 1; i<arrayOfDinos.size(); i++) {
+        for (int i = 1; i < arrayOfDinos.size(); i++) {
             if(arrayOfDinos.get(i).get(0).equals(name)) {
                 return arrayOfDinos.get(i);
             }
@@ -102,34 +101,28 @@ public class ReadDino {
         return null;
     }
     
-    private ArrayList<String> individualDinoArray(String dinosaurName,ArrayList<ArrayList<String>> arrayOfDinos)
-	{
-		ArrayList<String> pickedDinoStats = new ArrayList<String>();
-
-		for (ArrayList<String> dino : arrayOfDinos  )
-		{	
-			if(dino.get(0).equals(dinosaurName))
-			{
-				for (String s : dino)
-				{
-					pickedDinoStats.add(s);
-				}
-			}
-
-			System.out.println();
-		}	
-		return pickedDinoStats;
-	}
-
-	private void printOneDino(ArrayList<String> pickedDinoStats)
-	{
-		System.out.println();
-		for (String s : pickedDinoStats)
-		{
-			System.out.print(s + "\t");
-
-		}
-		return; 
-	}
-
+    private ArrayList<String> individualDinoArray(String dinosaurName, ArrayList<ArrayList<String>> arrayOfDinos) {
+        ArrayList<String> pickedDinoStats = new ArrayList<String>();
+        
+        for (ArrayList<String> dino : arrayOfDinos) {
+            if(dino.get(0).equals(dinosaurName)) {
+                for (String s : dino) {
+                    pickedDinoStats.add(s);
+                }
+            }
+            
+            System.out.println();
+        }
+        return pickedDinoStats;
+    }
+    
+    private void printOneDino(ArrayList<String> pickedDinoStats) {
+        System.out.println();
+        for (String s : pickedDinoStats) {
+            System.out.print(s + "\t");
+            
+        }
+        return;
+    }
+    
 }

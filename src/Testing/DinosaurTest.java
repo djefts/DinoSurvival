@@ -73,12 +73,12 @@ class DinosaurTest {
         
         dinosaur.setHerbivore(0);   //dino should want to eat grass
         dinosaur.addFood(delta);        //hungrier than thirsty
-        assertSame(grassTest1, dinosaur.wut2Eat(dinosaurs, grasses, waters));
+        assertSame(grassTest1, dinosaur.getFoodSource(dinosaurs, grasses, waters));
         dinosaur.setHerbivore(1);   //dino should want to eat meat
-        assertSame(dinoTest1, dinosaur.wut2Eat(dinosaurs, grasses, waters));
+        assertSame(dinoTest1, dinosaur.getFoodSource(dinosaurs, grasses, waters));
         dinosaur.addFood(-delta);       //reset hunger
         dinosaur.addWater(delta);       //thirstier than hungrier
-        assertSame(waterTest1, dinosaur.wut2Eat(dinosaurs, grasses, waters));
+        assertSame(waterTest1, dinosaur.getFoodSource(dinosaurs, grasses, waters));
     }
     
     

@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+import DataIO.ReadDino;
 
+import java.util.ArrayList;
 import static java.lang.Double.MAX_VALUE;
 
 public class Dinosaur implements Positionable {
@@ -335,7 +336,7 @@ public class Dinosaur implements Positionable {
         return closestWater;
     }
     
-    public Positioned wut2Eat(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) { //0=dino 1=grass for food type
+    public Positioned getFoodSource(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) { //0=dino 1=grass for food type
         if(curFood <= curWater && curFood != foodStorage) { //i need 2 eets da foodies
             return findFood(dinosaurs, grasses, waters);
         } else if(curWater != waterStorage) {               //i is thirsty
@@ -363,7 +364,7 @@ public class Dinosaur implements Positionable {
     }
     
     public void move(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
-        Positioned food = wut2Eat(dinosaurs, grasses, waters);
+        Positioned food = getFoodSource(dinosaurs, grasses, waters);
         try { //to find food
             if(distanceTo(food) <= getSpeed()) {    //can move to food in one turn
                 moveInRange(dinosaurs, grasses, waters);
@@ -380,7 +381,7 @@ public class Dinosaur implements Positionable {
     }
     
     public void moveInRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
-        Positioned food = wut2Eat(dinosaurs, grasses, waters);      //searching out target...
+        Positioned food = getFoodSource(dinosaurs, grasses, waters);      //searching out target...
         
         int xLocFood = food.getxLoc();
         int yLocFood = food.getyLoc();
@@ -411,7 +412,7 @@ public class Dinosaur implements Positionable {
     }
     
     public void moveOutRange(ArrayList<Dinosaur> dinosaurs, ArrayList<Grass> grasses, ArrayList<Water> waters) {
-        Positioned food = wut2Eat(dinosaurs, grasses, waters);      //searching out target...
+        Positioned food = getFoodSource(dinosaurs, grasses, waters);      //searching out target...
         
         //if there is not a valid food source found then the next 2 lines will throw a NullPointerException
         int xLocFood = food.getxLoc();
