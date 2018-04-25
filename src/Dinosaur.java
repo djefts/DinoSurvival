@@ -1,5 +1,3 @@
-import DataIO.ReadDino;
-
 import java.util.ArrayList;
 import static java.lang.Double.MAX_VALUE;
 

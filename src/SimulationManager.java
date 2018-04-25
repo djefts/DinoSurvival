@@ -63,10 +63,10 @@ public class SimulationManager {
                 dinosaurs.add(dinosaur.timeToReproduce());
             }
             System.out.println("There are " + dinosaurs.size() + " dinosaurs left.");
-            simulationLength -= 1;
+            //simulationLength -= 1;
             simulationTime += 1;
             //TODO update GUI
-        } while (simulationLength > 0);
+        } while (simulationTime < simulationLength);
         
         System.out.println("¡THE SIMULATION IS DONE!");
     }
@@ -79,6 +79,13 @@ public class SimulationManager {
         return simulationLength;
     }
     
+    public int getSimulationTime() {
+    	return simulationTime;
+    }
+    
+    public ArrayList<Dinosaur> getDinosaurs(){
+    	return dinosaurs;
+    }
     public void setResources() {
         setGrasses();
         setWaters();

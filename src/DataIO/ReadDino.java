@@ -1,4 +1,3 @@
-package DataIO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,22 +39,22 @@ public class ReadDino {
         //Read file and add it to arrayOfDinos
         processData(arrayOfDinos);
         //print file (testing purposes)
-        //printArray(arrayOfDinos);
+        printArray(arrayOfDinos);
     }
-    
+
     private void processData(ArrayList<ArrayList<String>> arrayOfDinos) {
         try {
             //Open up the scanner to read the raw data file
             Scanner input = new Scanner(file);
-            
+    
             //boolean .hasNextLine() returns true if there is another line
             while (input.hasNextLine()) {
                 String line = input.nextLine();             //the current line
                 String[] lineOfStats = line.split(",");     //separate the line by commas
-                
+    
                 //Creates a single ArrayList type string
                 ArrayList<String> singleDino = new ArrayList<>();
-                
+    
                 //goes through a single line similar to column
                 //s is the individual stat and lineOfStat is the entire row
                 for (String s : lineOfStats) {
@@ -63,9 +62,9 @@ public class ReadDino {
                     singleDino.add(s);
                 }
                 //Add singleDino to the full array list
-                arrayOfDinos.add(singleDino);
+                this.arrayOfDinos.add(singleDino);
             }
-            
+    
             //close the scanner when done :)
             input.close();
         } catch (FileNotFoundException e) {
@@ -102,7 +101,7 @@ public class ReadDino {
     }
     
     private ArrayList<String> individualDinoArray(String dinosaurName, ArrayList<ArrayList<String>> arrayOfDinos) {
-        ArrayList<String> pickedDinoStats = new ArrayList<String>();
+        ArrayList<String> pickedDinoStats = new ArrayList<>();
         
         for (ArrayList<String> dino : arrayOfDinos) {
             if(dino.get(0).equals(dinosaurName)) {

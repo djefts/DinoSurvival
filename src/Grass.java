@@ -85,7 +85,7 @@ public class Grass implements Positioned {
     
     private void setStageImages() {
         try {
-            grassStage1 = ImageIO.read(getClass().getResource("/resources/images/GrassStage1.png"));
+            grassStage1 = ImageIO.read(getClass().getResource("GrassStage1.png"));
             grassStage2 = ImageIO.read(getClass().getResource("/resources/images/grassStage2.png"));
             grassStage3 = ImageIO.read(getClass().getResource("/resources/images/grassStage3.png"));
             grassStage4 = ImageIO.read(getClass().getResource("/resources/images/grassStage4.png"));
