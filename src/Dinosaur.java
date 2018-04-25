@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import static java.lang.Double.MAX_VALUE;
 
 public class Dinosaur implements Positionable {
+	public String name;
     private int health;             //current health of the dinosaur
     private int maxHealth = 10;     //max health of the dinosaur
     private int speed;              //how far a dino can move in one "turn"

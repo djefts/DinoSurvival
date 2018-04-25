@@ -1,4 +1,3 @@
-package DataIO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +13,8 @@ import java.util.Scanner;
 public class ReadDino {
     
     File file;
-    
+    ArrayList<ArrayList<String>> arrayOfDinos;
+
     public static void main(String[] args) {
         ReadDino readDino = new ReadDino();
         readDino.setUp();
@@ -30,19 +30,22 @@ public class ReadDino {
         //URL url = readDino.getClass().getResource("/resources/DinoTable.csv");
         //URL url = readDino.getClass().getResource("DinoTable.xlsx");
         
-        file = new File(url.getPath());
-        
+        file = new File(fileName);
+        /*
         System.out.println(file.getAbsolutePath());
         System.out.println(file.exists());
         System.out.println(file.canRead());
         System.out.println("\n");
-        
+        */
         //Read file
         arrayOfDinos = processData(arrayOfDinos);
         //print file
         printArray(arrayOfDinos);
     }
     
+    public ArrayList<ArrayList<String>> getArrayOfDinos() {
+    	return arrayOfDinos;
+    }
     private ArrayList<ArrayList<String>> processData(ArrayList<ArrayList<String>> arrayOfDinos) {
         try {
             Scanner input = new Scanner(file);
@@ -85,7 +88,7 @@ public class ReadDino {
         }
     }
     
-    private ArrayList<String> individualDinoArray(String dinosaurName,ArrayList<ArrayList<String>> arrayOfDinos)
+    public ArrayList<String> individualDino(String dinosaurName,ArrayList<ArrayList<String>> arrayOfDinos)
 	{
 		ArrayList<String> pickedDinoStats = new ArrayList<String>();
 
@@ -104,7 +107,7 @@ public class ReadDino {
 		return pickedDinoStats;
 	}
 
-	private void printOneDino(ArrayList<String> pickedDinoStats)
+	public void printOneDino(ArrayList<String> pickedDinoStats)
 	{
 		System.out.println();
 		for (String s : pickedDinoStats)

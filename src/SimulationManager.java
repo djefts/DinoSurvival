@@ -1,4 +1,4 @@
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+//import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 
 import java.util.ArrayList;
 
@@ -66,10 +66,11 @@ public class SimulationManager {
                 dinosaur.move(dinosaurs, grasses, waters);
             }
             System.out.println("There are " + dinosaurs.size() + " dinosaurs left.");
-            simulationLength -= 1;
+            //simulationLength -= 1;
             simulationTime += 1;
+            DataCollection.collect(this);
             //update GUI
-        } while (simulationLength > 0);
+        } while (simulationTime < simulationLength);
         
         System.out.println("¡THE SIMULATION IS DONE!");
     }
@@ -82,6 +83,13 @@ public class SimulationManager {
         return simulationLength;
     }
     
+    public int getSimulationTime() {
+    	return simulationTime;
+    }
+    
+    public ArrayList<Dinosaur> getDinosaurs(){
+    	return dinosaurs;
+    }
     public void setResources() {
         setGrasses();
         setWaters();

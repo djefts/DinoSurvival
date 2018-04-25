@@ -3,8 +3,10 @@ import java.util.ArrayList;
 public class Tyrannosaurus extends Dinosaur {
     
     public Tyrannosaurus(int xLoc, int yLoc) {
-        ReadDino readDino = new ReadDino();
-        ArrayList<String> data = readDino.individualDino("Tyrannosaurus");
+    	super(xLoc, yLoc);
+        this.name = "Tyrannasaurus";  
+       //ArrayList<String> data = readDino.individualDino("Tyrannosaurus",readDino.getArrayOfDinos());
+       /*readDino.printOneDino(data);
         addHealth(data.get(0));
         setSpeed(data.get(1));
         setAttack(data.get(2));
@@ -18,6 +20,6 @@ public class Tyrannosaurus extends Dinosaur {
         setHerbivore(data.get(10));
         setHerd(data.get(11));
         setTerritorial(data.get(12));
-        setDinosaur(xLoc, yLoc);
+        setDinosaur(xLoc, yLoc);*/
     }
 }
