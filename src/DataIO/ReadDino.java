@@ -99,29 +99,4 @@ public class ReadDino {
         System.out.println("Did you spell the name right?");
         return null;
     }
-    
-    private ArrayList<String> individualDinoArray(String dinosaurName, ArrayList<ArrayList<String>> arrayOfDinos) {
-        ArrayList<String> pickedDinoStats = new ArrayList<>();
-        
-        for (ArrayList<String> dino : arrayOfDinos) {
-            if(dino.get(0).equals(dinosaurName)) {
-                for (String s : dino) {
-                    pickedDinoStats.add(s);
-                }
-            }
-            
-            System.out.println();
-        }
-        return pickedDinoStats;
-    }
-    
-    private void printOneDino(ArrayList<String> pickedDinoStats) {
-        System.out.println();
-        for (String s : pickedDinoStats) {
-            System.out.print(s + "\t");
-            
-        }
-        return;
-    }
-    
 }

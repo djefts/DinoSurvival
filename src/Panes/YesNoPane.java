@@ -19,11 +19,11 @@ import javafx.geometry.Pos;
 
 
 
-public class YesNoPane extends BorderPane {
+public class YesNoPane {
 	
 	//Define window properties
-	//public int Height = 300 ;
-	//public int Width = 450 ;
+	public int Height = 300 ;
+	public int Width = 450 ;
 	
 	
 	public BorderPane showSim() {
