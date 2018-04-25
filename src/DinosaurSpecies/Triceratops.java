@@ -4,6 +4,7 @@ public class Triceratops extends Dinosaur {
     
     public Triceratops(int xLoc, int yLoc) {
         setDinosaur(xLoc, yLoc, "Triceratops");
+        this.setSpecies("Triceratops");
     }
     
     @Override
