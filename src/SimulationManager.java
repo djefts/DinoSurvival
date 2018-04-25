@@ -65,6 +65,7 @@ public class SimulationManager {
             System.out.println("There are " + dinosaurs.size() + " dinosaurs left.");
             //simulationLength -= 1;
             simulationTime += 1;
+            DataCollection.collect(this);
             //TODO update GUI
         } while (simulationTime < simulationLength);
         
