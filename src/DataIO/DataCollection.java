@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-import DataIO.SimulationCount;
+//import DataIO.SimulationCount;
 
 public class DataCollection {
 	
-	public static ArrayList<DataIO.SimulationCount> dinoPopData = new ArrayList<SimulationCount>();
+	public static ArrayList<SimulationCount> dinoPopData = new ArrayList<SimulationCount>();
 	
 	public static void collect(SimulationManager simMan) {	
 		
@@ -14,7 +14,21 @@ public class DataCollection {
 			if(simMan.getSimulationTime() % 10 == 0)
 			{
 				SimulationCount simC = new SimulationCount();
-				simC.countTr = dinoSimCount(simMan, "Triceratop");
+				simC.countUser = dinoSimCount(simMan, "Usersaurus");
+				simC.countTri = dinoSimCount(simMan, "Triceratop");
+				simC.countTrex = dinoSimCount(simMan, "Tyrannosaurus");
+				simC.countSteg =  dinoSimCount(simMan, "Stegosaurus");
+				simC.countVel =  dinoSimCount(simMan, "Velociraptor");
+				simC.countDil =  dinoSimCount(simMan, "Dilophosaurus");
+				simC.countBrach =  dinoSimCount(simMan, "Brachiosaurus");
+				simC.countPtero =  dinoSimCount(simMan, "Pterodactyl");
+				simC.countPach =  dinoSimCount(simMan, "Pachycephalosaurus");
+				simC.countSpino =  dinoSimCount(simMan, "Spinosaurus");
+				simC.countPara =  dinoSimCount(simMan, "Parasaurolophus");
+				simC.countAnkyl =  dinoSimCount(simMan, "Ankylosaurus");
+				simC.countApa =  dinoSimCount(simMan, "Apatosaurus");
+				simC.simTime =  simMan.getSimulationTime();
+
 				dinoPopData.add(simC);
 			}
 	}
