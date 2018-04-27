@@ -1,12 +1,10 @@
-package DataIO;
-
 import java.util.Scanner;
 //import DataIO.SimulationCount;
 
 public class PrintSimulationData {
 	//variable declaration
 	
-	public static void printing(DataCollection dataCollect) {
+	public static void printing() {
 		/*prompt user to choice between viewing ALL data
 		 * viewing all dinosaurs at a specified time userTime
 		 * viewing one dinosaurs over time */
@@ -21,7 +19,7 @@ public class PrintSimulationData {
 		if( choice == 1)
 		{
 			//print ALL data method
-			printAllDinos(dataCollect);
+			printAllDinos();
 		}
 		if(choice == 2)
 		{
@@ -29,7 +27,7 @@ public class PrintSimulationData {
 			int userTime  = 0;
 			userTime = checkUserTime(userTime);
 
-			printAtUserTime(dataCollect, userTime);
+			printAtUserTime(userTime);
 		}
 		if(choice == 3)
 		{
@@ -37,22 +35,21 @@ public class PrintSimulationData {
 			System.out.print("Please enter a Dinosaur: ");
 			String userName = in.nextLine();
 
-			printDinoOverTime(dataCollect, userName);	
+			printDinoOverTime(userName);	
 		}
 		if(choice == 4)
 		{
 			System.out.print("Goodbye");
 		}
 
-
 		in.close();
 
 	}
 
 	//need a method to print ALL the dinosaurs and times.
-	public static void printAllDinos(DataCollection dataCollect)
+	public static void printAllDinos()
 	{
-		for(SimulationCount c : dataCollect.getSimulationCount())
+		for(SimulationCount c : DataCollection.getSimulationCount())
 		{
 			System.out.println("Population count of Dinosaurs at time: " + c.simTime);
 			System.out.println("Usersaurus: " + c.countUser);
@@ -73,12 +70,12 @@ public class PrintSimulationData {
 	}
 
 	//need a method to print all the dinosaurs pop at a specified time userTime
-	public static void printAtUserTime(DataCollection dataCollect, int userTime)
+	public static void printAtUserTime(int userTime)
 	{
-		for(SimulationCount c : dataCollect.getSimulationCount())
+		for(SimulationCount c : DataCollection.getSimulationCount())
 		{
-			//TODO: If the times aren't matched, find closest simTime then roll with that data
-			if (c.simTime == userTime)
+			//find the closest simTime
+			if (Math.abs(c.simTime - userTime) <= 5)
 			{
 				System.out.println("Population count of Dinosaurs at time: " + c.simTime);
 				System.out.println("Usersaurus: " + c.countUser);
@@ -100,9 +97,9 @@ public class PrintSimulationData {
 	}
 
 	//need a method to print a single dinosaur at simTime till the end.
-	public static void printDinoOverTime(DataCollection dataCollect, String name)
+	public static void printDinoOverTime(String name)
 	{
-		for(SimulationCount c : dataCollect.getSimulationCount())
+		for(SimulationCount c : DataCollection.getSimulationCount())
 		{
 			if(name  == "Usersaurus")
 				System.out.println("At time: " + c.simTime + " The Usersaurs Population is: " + c.countUser);

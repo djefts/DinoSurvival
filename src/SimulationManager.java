@@ -69,6 +69,7 @@ public class SimulationManager {
             //TODO update GUI
         } while (simulationTime < simulationLength);
         
+        PrintSimulationData.printing();
         System.out.println("¡THE SIMULATION IS DONE!");
     }
     
