@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package DataIO;
+
 
 public class SimulationCount{
 	public int simTime = 0;

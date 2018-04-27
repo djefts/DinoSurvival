@@ -1,3 +1,5 @@
+package DataIO;
+
 import java.util.ArrayList;
 //import DataIO.SimulationCount;
 
@@ -45,5 +47,8 @@ public class DataCollection {
 		}
 		return count;
 	}
+    public ArrayList<SimulationCount> getSimulationCount(){
+    	return dinoPopData;
+    }
  
 }
