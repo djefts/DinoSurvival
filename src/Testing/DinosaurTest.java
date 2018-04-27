@@ -68,7 +68,7 @@ class DinosaurTest {
     /**
      * determine what the dino should try to attack
      */
-    void wut2Eat() {
+    void getFoodSource() {
         instantiation();
         
         dinosaur.setHerbivore(0);   //dino should want to eat grass
@@ -92,6 +92,7 @@ class DinosaurTest {
             add(new Grass(10, 10, 3));  //too low growth stage to eat
             add(new Grass(25, 0, 1));   //too low growth stage to eat
         }};
+        
         dinosaur.setHerbivore(0);
         dinosaur.addFood(delta);
         assertEquals(true, dinosaur.isHerbivore());
