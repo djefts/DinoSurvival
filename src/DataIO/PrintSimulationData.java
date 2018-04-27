@@ -1,5 +1,5 @@
 import java.util.Scanner;
-//import DataIO.SimulationCount;
+import DataIO.SimulationCount;
 
 public class PrintSimulationData {
 	//variable declaration
@@ -51,20 +51,7 @@ public class PrintSimulationData {
 	{
 		for(SimulationCount c : DataCollection.getSimulationCount())
 		{
-			System.out.println("Population count of Dinosaurs at time: " + c.simTime);
-			System.out.println("Usersaurus: " + c.countUser);
-			System.out.println("Triceratop: " + c.countTri);
-			System.out.println("Tyrannosaurus: " + c.countTrex);
-			System.out.println("Stegosaurus: " + c.countSteg);
-			System.out.println("Velociraptor: " + c.countVel);
-			System.out.println("Dilophosaurus: " + c.countDil);
-			System.out.println("Brachiosaurus: " + c.countBrach);
-			System.out.println("Pterodactyl: " + c.countPtero);
-			System.out.println("Pachycephalosaurus: " + c.countPach);
-			System.out.println("Spinosaurus: " + c.countSpino);
-			System.out.println("Parasaurolophus: " + c.countPara);
-			System.out.println("Ankylosaurus: " + c.countAnkyl);
-			System.out.println("Apatosaurus: " + c.countApa);	
+			printData(c);
 		}
 
 	}
@@ -77,24 +64,27 @@ public class PrintSimulationData {
 			//find the closest simTime
 			if (Math.abs(c.simTime - userTime) <= 5)
 			{
-				System.out.println("Population count of Dinosaurs at time: " + c.simTime);
-				System.out.println("Usersaurus: " + c.countUser);
-				System.out.println("Triceratop: " + c.countTri);
-				System.out.println("Tyrannosaurus: " + c.countTrex);
-				System.out.println("Stegosaurus: " + c.countSteg);
-				System.out.println("Velociraptor: " + c.countVel);
-				System.out.println("Dilophosaurus: " + c.countDil);
-				System.out.println("Brachiosaurus: " + c.countBrach);
-				System.out.println("Pterodactyl: " + c.countPtero);
-				System.out.println("Pachycephalosaurus: " + c.countPach);
-				System.out.println("Spinosaurus: " + c.countSpino);
-				System.out.println("Parasaurolophus: " + c.countPara);
-				System.out.println("Ankylosaurus: " + c.countAnkyl);
-				System.out.println("Apatosaurus: " + c.countApa);
+				printData(c);
 			}
 		}
-
 	}
+	
+	public static void printData(SimulationCount c) {
+        System.out.println("Population count of Dinosaurs at time: " + c.simTime);
+        System.out.println("Usersaurus: " + c.countUser);
+        System.out.println("Triceratop: " + c.countTri);
+        System.out.println("Tyrannosaurus: " + c.countTrex);
+        System.out.println("Stegosaurus: " + c.countSteg);
+        System.out.println("Velociraptor: " + c.countVel);
+        System.out.println("Dilophosaurus: " + c.countDil);
+        System.out.println("Brachiosaurus: " + c.countBrach);
+        System.out.println("Pterodactyl: " + c.countPtero);
+        System.out.println("Pachycephalosaurus: " + c.countPach);
+        System.out.println("Spinosaurus: " + c.countSpino);
+        System.out.println("Parasaurolophus: " + c.countPara);
+        System.out.println("Ankylosaurus: " + c.countAnkyl);
+        System.out.println("Apatosaurus: " + c.countApa);
+    }
 
 	//need a method to print a single dinosaur at simTime till the end.
 	public static void printDinoOverTime(String name)

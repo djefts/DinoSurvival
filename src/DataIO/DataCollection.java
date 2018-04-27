@@ -44,7 +44,7 @@ public class DataCollection {
         return count;
     }
     
-    public ArrayList<SimulationCount> getSimulationCount() {
+    public static ArrayList<SimulationCount> getSimulationCount() {
         return dinoPopData;
     }
     
