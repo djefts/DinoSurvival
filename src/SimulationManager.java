@@ -53,6 +53,8 @@ public class SimulationManager {
             for (Water water : waters) {
             
             }
+            //TODO MAKE THIS WORK :(
+            //Not allowed to modify the size of an array list while looping through it
             for (Dinosaur dinosaur : dinosaurs) {
                 if(simulationLength % 3 == 0) { //dinosaurs lose 1 health and food every 3 turns
                     dinosaur.addFood(-1);
@@ -60,7 +62,9 @@ public class SimulationManager {
                 }
                 dinosaur.loseHealth();
                 dinosaur.move(dinosaurs, grasses, waters);
-                dinosaurs.add(dinosaur.timeToReproduce());
+                if(dinosaur.timeToReproduce() != null) {
+                    dinosaurs.add(dinosaur.timeToReproduce());
+                }
             }
             System.out.println("There are " + dinosaurs.size() + " dinosaurs left.");
             //simulationLength -= 1;
