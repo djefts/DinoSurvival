@@ -44,6 +44,9 @@ public class SimulationManager {
         for (Grass grass : grasses) {
             System.out.println(grass);
         }
+        for(Water water : waters) {
+            System.out.println(water);
+        }
         
         //simulation loop
         do {
@@ -56,7 +59,7 @@ public class SimulationManager {
             //TODO MAKE THIS WORK :(
             //Not allowed to modify the size of an array list while looping through it
             for (Dinosaur dinosaur : dinosaurs) {
-                if(simulationLength % 3 == 0) { //dinosaurs lose 1 health and food every 3 turns
+                if(simulationLength % 3 == 0) { //dinosaurs lose 1 food and water every 3 turns
                     dinosaur.addFood(-1);
                     dinosaur.addWater(-1);
                 }

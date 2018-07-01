@@ -253,7 +253,7 @@ public class CreateDinoPane {
 		//Add notes to GridPane
 		statOrganizer.add(name, 0, 0);
 		statOrganizer.add(dinoName, 1, 0);
-		statOrganizer.setHalignment(dinoName, HPos.CENTER);
+		GridPane.setHalignment(dinoName, HPos.CENTER);
 		
 		statOrganizer.add(total, 3, 10);
 		statOrganizer.add(statPoints, 0, 10);

@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DinosaurTest {
     
-    private final Dinosaur dinosaur = new Dinosaur(0, 0);               //dinosaur that is used as the "current" dinosaur deciding stuff
+    //dinosaur that is used as the "current" dinosaur deciding stuff
+    private final Dinosaur dinosaur = new Dinosaur(0, 0);
     
     private final int delta = -3;
     private Dinosaur dinoTest1 = new Dinosaur(25, 0);               //closest test dinosaur

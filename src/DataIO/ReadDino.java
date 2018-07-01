@@ -39,7 +39,7 @@ public class ReadDino {
         //Read file and add it to arrayOfDinos
         processData(arrayOfDinos);
         //print file (testing purposes)
-        printArray(arrayOfDinos);
+        //printArray(arrayOfDinos);
     }
 
     private void processData(ArrayList<ArrayList<String>> arrayOfDinos) {

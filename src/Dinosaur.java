@@ -180,11 +180,7 @@ public class Dinosaur implements Positionable {
     }
     
     public void setHerd(int herd) {
-        if(herd == 0) {
-            this.herd = false;
-        } else {
-            this.herd = true;
-        }
+        this.herd = herd != 0;
     }
     
     public boolean isTerritorial() {
@@ -192,11 +188,7 @@ public class Dinosaur implements Positionable {
     }
     
     public void setTerritorial(int territorial) {
-        if(territorial == 0) {
-            this.territorial = false;
-        } else {
-            this.territorial = true;
-        }
+        this.territorial = territorial != 0;
     }
     
     public boolean isHerbivore() {

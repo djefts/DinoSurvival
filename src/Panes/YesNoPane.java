@@ -52,10 +52,10 @@ public class YesNoPane {
 
 	//Add to BorderPane
 	showSim.setTop(showYN); //Top 
-	showSim.setAlignment(showYN, Pos.CENTER) ;
+	BorderPane.setAlignment(showYN, Pos.CENTER) ;
 
 	showSim.setCenter(centerButts); //Center
-	showSim.setAlignment(centerButts, Pos.TOP_RIGHT) ;
+	BorderPane.setAlignment(centerButts, Pos.TOP_RIGHT) ;
 	
 	
 	/***********************Event Handler**************************/
